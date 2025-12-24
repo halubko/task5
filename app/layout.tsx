@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
    title: "Shop",
+   description: "Internet-shop, shop, marketplace, market",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
