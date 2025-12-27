@@ -1,3 +1,9 @@
+import { LoginForm } from "@/shared/components/ui/login-form";
+
 export default function SignIn() {
-   return <div>SignIn Form</div>;
+   return (
+      <div>
+         <LoginForm />
+      </div>
+   );
 }
