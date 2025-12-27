@@ -1,9 +1,9 @@
-import { LoginForm } from "@/shared/components/ui/login-form";
+import { SignIn } from "@/shared/components/ui/SignIn";
 
-export default function SignIn() {
+export default function SignInPage() {
    return (
       <div>
-         <LoginForm />
+         <SignIn />
       </div>
    );
 }

@@ -10,16 +10,13 @@ import {
 import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/shared/components/ui/field";
 import { Input } from "@/shared/components/ui/input";
 
-export function LoginForm({ className, ...props }: React.ComponentProps<"div">) {
+export function SignIn({ className, ...props }: React.ComponentProps<"div">) {
    return (
       <div
-         className={cn(
-            "flex flex-col gap-6 w-full max-w-md mx-auto bg-slate-100 mt-[150px]",
-            className
-         )}
+         className={cn("flex flex-col gap-6 w-full max-w-md mx-auto bg-slate-100", className)}
          {...props}
       >
-         <Card>
+         <Card className={"mt-20"}>
             <CardHeader>
                <CardTitle>Login to your account</CardTitle>
                <CardDescription>Enter your email below to login to your account</CardDescription>
