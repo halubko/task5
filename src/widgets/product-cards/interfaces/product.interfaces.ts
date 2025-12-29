@@ -1,3 +1,5 @@
+import type { ReviewInterface } from "@/entities/product/interfaces/review.interface";
+
 export interface ProductInterface {
    id: number;
    title: string;
@@ -5,4 +7,5 @@ export interface ProductInterface {
    price: number;
    rating: number;
    images: string[];
+   reviews: ReviewInterface[];
 }
