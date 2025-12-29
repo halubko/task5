@@ -26,6 +26,7 @@ const ProductImagesCard = ({ title, images }: ProductInterface) => {
                               src={image}
                               alt={title + index}
                               fill
+                              sizes="contain"
                               loading="eager"
                               className="object-contain mx-auto max-w-xs md:max-w-xl h-fit"
                            />
