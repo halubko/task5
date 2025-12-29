@@ -2,18 +2,21 @@
 
 import { Label } from "@/shared/components/ui/label";
 import type { ReactNode } from "react";
-import { SidebarGroup } from "@/shared/components/ui/sidebar";
+import { SidebarSeparator } from "@/shared/components/ui/sidebar";
 
-interface SidebarItemProps {
+interface SheetItemProps {
    label: string;
    children: ReactNode;
 }
 
-const SidebarItem = ({ label, children }: SidebarItemProps) => (
-   <div className="w-full max-w-sm space-y-2 p-2">
-      <Label htmlFor="search-input">{label}</Label>
-      <div className="relative">{children}</div>
-   </div>
+const SheetItem = ({ label, children }: SheetItemProps) => (
+   <>
+      <div className="w-full max-w-sm space-y-2 p-2">
+         <Label htmlFor="search-input">{label}</Label>
+         <div className="relative">{children}</div>
+      </div>
+      <SidebarSeparator />
+   </>
 );
 
-export default SidebarItem;
+export default SheetItem;

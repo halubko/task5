@@ -1,19 +1,22 @@
 "use client";
 
-import {
-   Sidebar,
-   SidebarContent,
-   SidebarHeader,
-   SidebarInput,
-   SidebarSeparator,
-} from "@/shared/components/ui/sidebar";
-import SidebarItem from "@/widgets/products-filter/components/ui/SidebarItem";
-import { Search } from "lucide-react";
+import { SidebarInput } from "@/shared/components/ui/sidebar";
+import SheetItem from "@/widgets/products-filter/components/ui/SheetItem";
+import { ListFilterPlus, Search } from "lucide-react";
 import { BasicSelector } from "@/shared/components/BasicSelector";
 import { sortValues } from "@/widgets/products-filter/data/sort-values";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useMemo } from "react";
 import { useDebouncedCallback } from "use-debounce";
+import {
+   Sheet,
+   SheetContent,
+   SheetDescription,
+   SheetHeader,
+   SheetTitle,
+   SheetTrigger,
+} from "@/shared/components/ui/sheet";
+import { Button } from "@/shared/components/ui/button";
 
 export function ProductsFilter() {
    const router = useRouter();
@@ -51,12 +54,19 @@ export function ProductsFilter() {
    }, 500);
 
    return (
-      <Sidebar>
-         <SidebarHeader>
-            <h2>Filters</h2>
-         </SidebarHeader>
-         <SidebarContent>
-            <SidebarItem label="Search">
+      <Sheet>
+         <SheetTrigger asChild>
+            <Button variant="outline" size="icon">
+               <ListFilterPlus />
+            </Button>
+         </SheetTrigger>
+         <SheetContent side="left">
+            <SheetHeader>
+               <SheetTitle>Filters</SheetTitle>
+            </SheetHeader>
+            {/*for area-desirability*/}
+            <SheetDescription className="hidden">Filters</SheetDescription>
+            <SheetItem label="Search">
                <Search className="-translate-y-1/2 absolute top-1/2 left-3 h-4 w-4 text-muted-foreground" />
                <SidebarInput
                   className="bg-background pl-9"
@@ -66,9 +76,8 @@ export function ProductsFilter() {
                   defaultValue={searchValue}
                   onChange={(e) => handleSearchChange(e.target.value)}
                />
-            </SidebarItem>
-            <SidebarSeparator />
-            <SidebarItem label="Sort by">
+            </SheetItem>
+            <SheetItem label="Sort by">
                {/* add real data */}
                <BasicSelector
                   basicValue="Sort by"
@@ -76,9 +85,8 @@ export function ProductsFilter() {
                   value={sortValue}
                   onValueChange={handleSortChange}
                />
-            </SidebarItem>
-            <SidebarSeparator />
-         </SidebarContent>
-      </Sidebar>
+            </SheetItem>
+         </SheetContent>
+      </Sheet>
    );
 }
