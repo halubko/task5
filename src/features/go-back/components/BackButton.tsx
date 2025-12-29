@@ -9,7 +9,7 @@ const BackButton = (props: ButtonHTMLAttributes<HTMLButtonElement>) => {
    const router = useRouter();
 
    return (
-      <Button onClick={() => router.back()} size="icon" {...props}>
+      <Button onClick={() => router.back()} size="icon" variant="outline" {...props}>
          <ArrowLeft />
       </Button>
    );
