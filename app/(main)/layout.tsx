@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { SidebarProvider } from "@/shared/components/ui/sidebar";
-import { ProductsFilter } from "@/widgets/products-filter/components/ProductsFilter";
 import Header from "@/widgets/header/components/Header";
 
 export const metadata: Metadata = {
@@ -10,12 +8,9 @@ export const metadata: Metadata = {
 
 export default function MainLayout({ children }: { children: ReactNode }) {
    return (
-      <SidebarProvider defaultOpen={false}>
-         <ProductsFilter />
-         <div>
-            <Header isMainPage />
-            <main>{children}</main>
-         </div>
-      </SidebarProvider>
+      <>
+         <Header isMainPage />
+         <main>{children}</main>
+      </>
    );
 }

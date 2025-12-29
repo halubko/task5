@@ -10,12 +10,10 @@ interface SidebarItemProps {
 }
 
 const SidebarItem = ({ label, children }: SidebarItemProps) => (
-   <SidebarGroup>
-      <div className="w-full max-w-sm space-y-2">
-         <Label htmlFor="search-input">{label}</Label>
-         <div className="relative">{children}</div>
-      </div>
-   </SidebarGroup>
+   <div className="w-full max-w-sm space-y-2 p-2">
+      <Label htmlFor="search-input">{label}</Label>
+      <div className="relative">{children}</div>
+   </div>
 );
 
 export default SidebarItem;
