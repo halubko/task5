@@ -13,7 +13,9 @@ const Header = ({ isMainPage = false }: HeaderProps) => {
    return (
       <header className="grid grid-cols-3 items-center p-2">
          <div className="flex gap-2">{isMainPage && <SidebarTrigger />}</div>
-         <h1 className="justify-self-center">KakaShop</h1>
+         <Link href="/">
+            <h1 className="justify-self-center">KakaShop</h1>
+         </Link>
          <div className="flex gap-2 justify-end">
             <ThemeToggleButton />
             <Link href="/cart">
