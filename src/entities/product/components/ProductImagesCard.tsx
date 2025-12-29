@@ -21,14 +21,13 @@ const ProductImagesCard = ({ title, images }: ProductInterface) => {
                <CarouselContent>
                   {images.map((image, index) => (
                      <CarouselItem key={index} className="flex justify-center items-center">
-                        <div className="relative w-full h-[500px] md:h-[600px]">
+                        <div className="relative w-full h-[500px]  md:h-[600px]">
                            <Image
                               src={image}
                               alt={title + index}
                               fill
-                              priority={index === 0}
-                              className="object-contain"
-                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1000px"
+                              loading="eager"
+                              className="object-contain mx-auto max-w-xs md:max-w-xl h-fit"
                            />
                         </div>
                      </CarouselItem>
