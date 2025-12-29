@@ -1,5 +1,5 @@
 import { getAllProducts } from "@/widgets/products-list/api/api";
-import ProductCard from "@/entities/product/components/ProductCard";
+import ProductShortCard from "@/widgets/product-cards/components/ProductShortCard";
 
 interface ProductsListProps {
    searchParams?: { [key: string]: string | undefined };
@@ -14,7 +14,7 @@ const ProductsList = async ({ searchParams }: ProductsListProps) => {
    return (
       <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 row-auto p-2 gap-2">
          {products.map((product) => (
-            <ProductCard key={product.id} {...product} />
+            <ProductShortCard key={product.id} {...product} />
          ))}
       </div>
    );

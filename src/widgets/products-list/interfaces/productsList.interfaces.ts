@@ -1,4 +1,4 @@
-import type { ProductInterface } from "@/entities/product/interfaces/product.interfaces";
+import type { ProductInterface } from "@/widgets/product-cards/interfaces/product.interfaces";
 
 export interface ProductsListResponseInterface {
    products: ProductInterface[];

@@ -1,6 +1,6 @@
 import axios, { type AxiosResponse } from "axios";
 import { BASE_URL } from "@/shared/constants/constants";
-import type { ProductsListResponseInterface } from "@/widgets/products-list/interfaces/ProductsList.Interfaces";
+import type { ProductsListResponseInterface } from "@/widgets/products-list/interfaces/productsList.interfaces";
 
 const axiosInstance = axios.create({
    baseURL: BASE_URL + "products",
