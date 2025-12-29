@@ -8,7 +8,6 @@ import {
    CardTitle,
 } from "@/shared/components/ui/card";
 import type { ProductInterface } from "@/entities/product/interfaces/product.interfaces";
-import { Button } from "@/shared/components/ui/button";
 import Image from "next/image";
 import {
    Carousel,
