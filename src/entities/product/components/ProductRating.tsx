@@ -28,7 +28,7 @@ export const ProductRating = forwardRef<HTMLDivElement, RatingProps>(
                return (
                   <Star
                      key={i}
-                     size={20}
+                     size={18}
                      className={cn(
                         "cursor-pointer transition-colors",
                         currentRating >= ratingValue
