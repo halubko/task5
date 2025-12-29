@@ -18,25 +18,30 @@ import {
    CarouselPrevious,
 } from "@/shared/components/ui/carousel";
 import { RatingStars } from "@/shared/components/RatingStars";
+import Link from "next/link";
 
-const ProductCard = ({ title, price, description, images, rating }: ProductInterface) => {
+const ProductCard = ({ title, price, description, images, rating, id }: ProductInterface) => {
    return (
       <Card>
          <CardHeader>
-            <CardTitle>{title}</CardTitle>
+            <Link href={`/${id}`}>
+               <CardTitle>{title}</CardTitle>
+            </Link>
          </CardHeader>
          <CardContent>
             <Carousel className="w-full">
                <CarouselContent className="mx-auto">
                   {images.map((image) => (
                      <CarouselItem key={image}>
-                        <Image
-                           src={image}
-                           alt={title}
-                           width={300}
-                           height={300}
-                           className="object-cover mx-auto"
-                        />
+                        <Link href={`/${id}`}>
+                           <Image
+                              src={image}
+                              alt={title}
+                              width={300}
+                              height={300}
+                              className="object-cover mx-auto"
+                           />
+                        </Link>
                      </CarouselItem>
                   ))}
                </CarouselContent>
@@ -47,13 +52,15 @@ const ProductCard = ({ title, price, description, images, rating }: ProductInter
                   </>
                )}
             </Carousel>
-            <CardDescription className="text-ellipsis overflow-hidden line-clamp-3">
-               {description}
-            </CardDescription>
-            <div className="w-full flex justify-between">
-               <span className="mt-2">Price: {price}$</span>
-               <span className="mt-2 flex gap-1">Rating: {<RatingStars rating={rating} />}</span>
-            </div>
+            <Link href={`/${id}`}>
+               <CardDescription className="text-ellipsis overflow-hidden line-clamp-3">
+                  {description}
+               </CardDescription>
+               <div className="w-full flex justify-between">
+                  <span className="mt-2">Price: {price}$</span>
+                  <span className="mt-2 flex gap-1">Rating: {<RatingStars rating={rating} />}</span>
+               </div>
+            </Link>
          </CardContent>
          <CardFooter className="flex justify-center items-center">
             <CardAction className="w-full">
