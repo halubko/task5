@@ -13,7 +13,7 @@ export default function MainLayout({ children }: { children: ReactNode }) {
       <SidebarProvider defaultOpen={true}>
          <ProductsFilter />
          <div>
-            <Header />
+            <Header isMainPage />
             <main>{children}</main>
          </div>
       </SidebarProvider>
