@@ -11,7 +11,7 @@ interface RatingProps extends InputHTMLAttributes<HTMLDivElement> {
 }
 
 // Add adaptive
-export const RatingStars = forwardRef<HTMLDivElement, RatingProps>(
+export const ProductRating = forwardRef<HTMLDivElement, RatingProps>(
    ({ rating, onRate, editable = false, ...props }, ref) => {
       const [hoverRating, setHoverRating] = useState(0);
       const currentRating = hoverRating || rating;
@@ -45,4 +45,4 @@ export const RatingStars = forwardRef<HTMLDivElement, RatingProps>(
    }
 );
 
-RatingStars.displayName = "RatingStars";
+ProductRating.displayName = "ProductRating";
