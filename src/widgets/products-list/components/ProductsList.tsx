@@ -12,7 +12,7 @@ const ProductsList = async ({ searchParams }: ProductsListProps) => {
    });
 
    return (
-      <div className="grid grid-cols-4 row-auto p-2 gap-2">
+      <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 row-auto p-2 gap-2">
          {products.map((product) => (
             <ProductCard key={product.id} {...product} />
          ))}
