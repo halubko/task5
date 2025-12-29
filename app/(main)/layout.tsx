@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function MainLayout({ children }: { children: ReactNode }) {
    return (
-      <SidebarProvider defaultOpen={true}>
+      <SidebarProvider defaultOpen={false}>
          <ProductsFilter />
          <div>
             <Header isMainPage />
