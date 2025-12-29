@@ -1,7 +1,6 @@
 import { Button } from "@/shared/components/ui/button";
 import { ShoppingCartIcon } from "lucide-react";
 import { ThemeToggleButton } from "@/features/toggle-theme/components/ThemeToogleButton";
-import { SidebarTrigger } from "@/shared/components/ui/sidebar";
 import ProfileDropdown from "@/widgets/header/components/ui/ProfileDropdown";
 import Link from "next/link";
 import BackButton from "@/features/go-back/components/BackButton";
