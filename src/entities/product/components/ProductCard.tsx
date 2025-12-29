@@ -19,6 +19,7 @@ import {
 } from "@/shared/components/ui/carousel";
 import { RatingStars } from "@/shared/components/RatingStars";
 import Link from "next/link";
+import AddToCartButton from "@/features/add-to-cart/components/AddToCartButton";
 
 const ProductCard = ({ title, price, description, images, rating, id }: ProductInterface) => {
    return (
@@ -64,7 +65,7 @@ const ProductCard = ({ title, price, description, images, rating, id }: ProductI
          </CardContent>
          <CardFooter className="flex justify-center items-center">
             <CardAction className="w-full">
-               <Button className="w-full">Add to cart</Button>
+               <AddToCartButton className="w-full" />
             </CardAction>
          </CardFooter>
       </Card>
