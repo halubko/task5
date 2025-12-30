@@ -6,7 +6,7 @@ import { ListFilterPlus, Search } from "lucide-react";
 import { BasicSelector } from "@/shared/components/BasicSelector";
 import { sortValues } from "@/widgets/products-filter/data/sort-values";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import {
    Sheet,
@@ -25,8 +25,8 @@ export function ProductsFilter() {
    const preSearchParams = useSearchParams();
    const searchParams = useMemo(() => preSearchParams ?? new URLSearchParams(), [preSearchParams]);
 
-   const searchValue = searchParams.get("search") || "";
-   const sortValue = searchParams.get("sort") || "";
+   const [searchValue, setSearchValue] = useState<string>(searchParams.get("q") || "");
+   const [sortValue, setSortValue] = useState(searchParams.get("order") || "");
 
    const createQueryString = useCallback(
       (name: string, value: string) => {
@@ -44,12 +44,14 @@ export function ProductsFilter() {
    );
 
    const handleSortChange = (value: string) => {
-      const queryString = createQueryString("sort", value);
+      const queryString = createQueryString("order", value);
+      setSortValue(value);
       router.push(`${pathname}?${queryString}`);
    };
 
    const handleSearchChange = useDebouncedCallback((value: string) => {
-      const queryString = createQueryString("search", value);
+      const queryString = createQueryString("q", value);
+      setSearchValue(value);
       router.push(`${pathname}?${queryString}`);
    }, 500);
 
@@ -77,10 +79,10 @@ export function ProductsFilter() {
                   onChange={(e) => handleSearchChange(e.target.value)}
                />
             </SheetItem>
-            <SheetItem label="Sort by">
+            <SheetItem label="Price sort by">
                {/* add real data */}
                <BasicSelector
-                  basicValue="Sort by"
+                  basicValue="Order"
                   values={sortValues}
                   value={sortValue}
                   onValueChange={handleSortChange}
