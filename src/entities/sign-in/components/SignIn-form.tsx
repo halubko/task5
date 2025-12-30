@@ -35,7 +35,7 @@ export function SignInForm({ className, ...props }: React.ComponentProps<"div">)
                         <div className="flex items-center">
                            <FieldLabel htmlFor="password">Password</FieldLabel>
                            <a
-                              href="#"
+                              href="@/entities/sign-in/components/SignIn-form#"
                               className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
                            >
                               Forgot your password?
@@ -48,7 +48,8 @@ export function SignInForm({ className, ...props }: React.ComponentProps<"div">)
                            Login
                         </Button>
                         <FieldDescription className="text-center">
-                           Don&apos;t have an account? <a href="#">Sign up</a>
+                           Don&apos;t have an account?{" "}
+                           <a href="@/entities/sign-in/components/SignIn-form#">Sign up</a>
                         </FieldDescription>
                      </Field>
                   </FieldGroup>

@@ -1,4 +1,4 @@
-import { SignInForm } from "@/shared/components/ui/SignIn-form";
+import { SignInForm } from "@/entities/sign-in/components/SignIn-form";
 
 const SignInPage = () => {
    return (
