@@ -53,7 +53,7 @@ export function ProductsFilter() {
       const queryString = createQueryString("q", value);
       setSearchValue(value);
       router.push(`${pathname}?${queryString}`);
-   }, 500);
+   }, 300);
 
    return (
       <Sheet>
