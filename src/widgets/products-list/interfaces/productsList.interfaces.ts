@@ -6,3 +6,9 @@ export interface ProductsListResponseInterface {
    skip: number;
    limit: number;
 }
+
+export interface ProductParamsInterface {
+   sortBy?: string;
+   order?: string;
+   q?: string;
+}
