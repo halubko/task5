@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { type AxiosResponse } from "axios";
 import { BASE_URL } from "@/shared/constants/constants";
 
 const axiosInstance = axios.create({
@@ -6,6 +6,6 @@ const axiosInstance = axios.create({
 });
 
 export const getProductCategoryList = async () => {
-   const response = await axiosInstance.get("/category-list");
+   const response: AxiosResponse<string[]> = await axiosInstance.get("/category-list");
    return response.data;
 };
