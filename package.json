@@ -57,7 +57,7 @@
    "lint-staged": {
       "*.{js,jsx,ts,tsx}": [
          "eslint --fix",
-         "tsc-files --noEmit"
+         "tsc-files --noEmit --tsBuildInfoFile ./node_modules/.cache/tsc-files.tsbuildinfo"
       ]
    }
 }
