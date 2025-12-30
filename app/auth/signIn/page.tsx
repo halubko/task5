@@ -1,5 +1,11 @@
+import { SignInForm } from "@/shared/components/ui/SignIn-form";
+
 const SignInPage = () => {
-   return <div>SignInPage</div>;
+   return (
+      <>
+         <SignInForm />
+      </>
+   );
 };
 
 export default SignInPage;
