@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Toaster } from "@/shared/components/ui/sonner";
 import type { ReactNode } from "react";
-import "@/app/styles/globals.css";
 import { ThemeProvider } from "next-themes";
+import "@/app/styles/global.css";
 
 export const metadata: Metadata = {
    title: "Shop",
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
    return (
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
          <body>
             <ThemeProvider
                attribute="class"
