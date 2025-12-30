@@ -8,6 +8,7 @@ import {
 } from "@/shared/components/ui/card";
 import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/shared/components/ui/field";
 import { Input } from "@/shared/components/ui/input";
+import Link from "next/link";
 
 export function SignUpForm({ ...props }: React.ComponentProps<typeof Card>) {
    return (
@@ -50,7 +51,7 @@ export function SignUpForm({ ...props }: React.ComponentProps<typeof Card>) {
                               Create Account
                            </Button>
                            <FieldDescription className="px-6 text-center">
-                              Already have an account? <a href="#">Sign in</a>
+                              Already have an account? <Link href="#">Sign in</Link>
                            </FieldDescription>
                         </Field>
                      </FieldGroup>
