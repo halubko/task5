@@ -26,3 +26,13 @@ export const getSearchedProducts = async (params: ProductParamsInterface) => {
    );
    return response.data;
 };
+
+export const getProductsByCategory = async (params: ProductParamsInterface, category: string) => {
+   const response: AxiosResponse<ProductsListResponseInterface> = await axiosInstance.get(
+      `/category/${category}`,
+      {
+         params,
+      }
+   );
+   return response.data;
+};
