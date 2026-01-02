@@ -12,11 +12,13 @@ import {
    Sheet,
    SheetContent,
    SheetDescription,
+   SheetFooter,
    SheetHeader,
    SheetTitle,
    SheetTrigger,
 } from "@/shared/components/ui/sheet";
 import { Button } from "@/shared/components/ui/button";
+import ProductCategories from "@/widgets/products-filter/components/ui/ProductCategories";
 
 export function ProductsFilter() {
    const router = useRouter();
@@ -27,6 +29,7 @@ export function ProductsFilter() {
 
    const [searchValue, setSearchValue] = useState<string>(searchParams.get("q") || "");
    const [sortValue, setSortValue] = useState(searchParams.get("order") || "");
+   const [categoryValue, setCategoryValue] = useState<string>(searchParams.get("category") || "");
 
    const createQueryString = useCallback(
       (name: string, value: string) => {
@@ -55,6 +58,19 @@ export function ProductsFilter() {
       router.push(`${pathname}?${queryString}`);
    }, 300);
 
+   const handleCategoryChange = (value: string) => {
+      const queryString = createQueryString("category", value);
+      setCategoryValue(value);
+      router.push(`${pathname}?${queryString}`);
+   };
+
+   const handleClear = () => {
+      setSearchValue("");
+      setCategoryValue("");
+      setSortValue("");
+      router.push("/");
+   };
+
    return (
       <Sheet>
          <SheetTrigger asChild>
@@ -66,7 +82,7 @@ export function ProductsFilter() {
             <SheetHeader>
                <SheetTitle>Filters</SheetTitle>
             </SheetHeader>
-            {/*for area-desirability*/}
+            {/*for solution aria-describedby warning*/}
             <SheetDescription className="hidden">Filters</SheetDescription>
             <SheetItem label="Search">
                <Search className="-translate-y-1/2 absolute top-1/2 left-3 h-4 w-4 text-muted-foreground" />
@@ -80,7 +96,6 @@ export function ProductsFilter() {
                />
             </SheetItem>
             <SheetItem label="Price sort by">
-               {/* add real data */}
                <BasicSelector
                   basicValue="Order"
                   values={sortValues}
@@ -88,6 +103,21 @@ export function ProductsFilter() {
                   onValueChange={handleSortChange}
                />
             </SheetItem>
+            <div className="overflow-y-auto">
+               <SheetItem label="Category">
+                  <ProductCategories onValueChange={handleCategoryChange} value={categoryValue} />
+               </SheetItem>
+            </div>
+            <SheetFooter className="flex">
+               <Button
+                  onClick={() => handleCategoryChange("")}
+                  className="mt-2 w-full"
+                  variant="outline"
+               >
+                  Clear category
+               </Button>
+               <Button onClick={handleClear}>Clear all</Button>
+            </SheetFooter>
          </SheetContent>
       </Sheet>
    );
