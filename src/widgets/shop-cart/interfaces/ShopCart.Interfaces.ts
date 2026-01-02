@@ -17,3 +17,7 @@ export interface CartData {
       message: string;
    };
 }
+
+export interface CartInfo {
+   items: CartItem[];
+}

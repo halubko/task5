@@ -65,12 +65,7 @@ export default function ShopCart() {
                   />
                )}
             </div>
-            <ShopCartInfo
-               items={items}
-               isRemoving={isRemoving}
-               removeItem={removeItem}
-               updateQuantity={updateQuantity}
-            />
+            <ShopCartInfo items={items} />
          </div>
       </div>
    );

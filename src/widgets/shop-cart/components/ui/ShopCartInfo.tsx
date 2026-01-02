@@ -3,9 +3,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui
 import { Separator } from "@/shared/components/ui/separator";
 import { Button } from "@/shared/components/ui/button";
 import { CreditCard, Shield, ShoppingBag } from "lucide-react";
-import type { Props } from "@/entities/shop-cart/interfaces/ShopCart.Interfaces";
+import type { CartInfo } from "@/widgets/shop-cart/interfaces/ShopCart.Interfaces";
 
-export const ShopCartInfo = ({ items, isRemoving, removeItem, updateQuantity }: Props) => {
+export const ShopCartInfo = ({ items }: CartInfo) => {
    const subtotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
    const savings = items.reduce(
       (sum, item) => sum + (item.originalPrice - item.price) * item.quantity,
