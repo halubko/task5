@@ -2,7 +2,7 @@
 
 import { Label } from "@/shared/components/ui/label";
 import type { ReactNode } from "react";
-import { SidebarSeparator } from "@/shared/components/ui/sidebar";
+import { Separator } from "@/shared/components/ui/separator";
 
 interface SheetItemProps {
    label: string;
@@ -15,7 +15,7 @@ const SheetItem = ({ label, children }: SheetItemProps) => (
          <Label htmlFor="search-input">{label}</Label>
          <div className="relative">{children}</div>
       </div>
-      <SidebarSeparator />
+      <Separator />
    </>
 );
 
