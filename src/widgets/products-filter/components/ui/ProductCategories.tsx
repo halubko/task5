@@ -2,6 +2,8 @@ import { RadioGroup, RadioGroupItem } from "@/shared/components/ui/radio-group";
 import { getProductCategoryList } from "@/widgets/products-filter/api/api";
 import { useEffect, useState } from "react";
 import { Label } from "@/shared/components/ui/label";
+import { capitalizeFirstLetter } from "@/shared/utils/helpers";
+import { Spinner } from "@/shared/components/ui/spinner";
 
 interface ProductCategoriesProps {
    onValueChange: (value: string) => void;
@@ -19,7 +21,7 @@ const ProductCategories = ({ onValueChange, value }: ProductCategoriesProps) => 
    }, []);
 
    if (!categories) {
-      return <div>Error loading categories</div>;
+      return <Spinner />;
    }
 
    return (
@@ -27,7 +29,7 @@ const ProductCategories = ({ onValueChange, value }: ProductCategoriesProps) => 
          {categories.map((category) => (
             <div className="flex items-center gap-2" key={category}>
                <RadioGroupItem value={category} id={category} />
-               <Label htmlFor={category}>{category}</Label>
+               <Label htmlFor={category}>{capitalizeFirstLetter(category)}</Label>
             </div>
          ))}
       </RadioGroup>
