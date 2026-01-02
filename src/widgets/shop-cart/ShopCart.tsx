@@ -1,35 +1,15 @@
 "use client";
 
-import { useState } from "react";
 import { ShoppingBag } from "lucide-react";
 import { Button } from "@/shared/components/ui/button";
 import { Card, CardContent } from "@/shared/components/ui/card";
 import { cartData } from "@/widgets/shop-cart/data/mock-data";
 import { ShopCartItem } from "@/entities/shop-cart/components/ShopCartItem";
-import type { CartItem } from "@/widgets/shop-cart/interfaces/ShopCart.Interfaces";
 import { ShopCartInfo } from "@/widgets/shop-cart/components/ui/ShopCartInfo";
+import { useCartActions } from "@/widgets/shop-cart/utils/helpers";
 
 export default function ShopCart() {
-   const [items, setItems] = useState<CartItem[]>(cartData.items);
-   const [isRemoving, setIsRemoving] = useState<string | null>(null);
-
-   const updateQuantity = (id: string, increment: boolean) => {
-      setItems((currentItems) =>
-         currentItems.map((item) =>
-            item.id === id
-               ? { ...item, quantity: Math.max(1, item.quantity + (increment ? 1 : -1)) }
-               : item
-         )
-      );
-   };
-
-   const removeItem = (id: string) => {
-      setIsRemoving(id);
-      setTimeout(() => {
-         setItems((currentItems) => currentItems.filter((item) => item.id !== id));
-         setIsRemoving(null);
-      }, 300);
-   };
+   const { items, isRemoving, updateQuantity, removeItem } = useCartActions(cartData.items);
 
    return (
       <div className="container mx-auto max-w-7xl px-4 py-8">
