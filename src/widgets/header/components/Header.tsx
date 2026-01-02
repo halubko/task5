@@ -12,7 +12,7 @@ interface HeaderProps {
 
 const Header = ({ isMainPage = false }: HeaderProps) => {
    return (
-      <header className="grid grid-cols-2 items-center p-2 sticky top-0 z-10 bg-black">
+      <header className="grid grid-cols-2 items-center p-2 sticky top-0 z-10">
          <div className="flex items-center gap-2">
             {isMainPage ? <ProductsFilter /> : <BackButton />}
             <Link href="/" className="flex items-center">
