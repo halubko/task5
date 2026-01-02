@@ -1,18 +1,12 @@
-import { cartData } from "@/widgets/shop-cart/data/mock-data";
 import { Card, CardContent, CardHeader, CardTitle } from "@/shared/components/ui/card";
 import { Separator } from "@/shared/components/ui/separator";
 import { Button } from "@/shared/components/ui/button";
 import { CreditCard, Shield, ShoppingBag } from "lucide-react";
 import type { CartInfo } from "@/widgets/shop-cart/interfaces/ShopCart.Interfaces";
+import { calculateCartTotals } from "@/widgets/shop-cart/utils/useSumCalculation";
 
 export const ShopCartInfo = ({ items }: CartInfo) => {
-   const subtotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
-   const savings = items.reduce(
-      (sum, item) => sum + (item.originalPrice - item.price) * item.quantity,
-      0
-   );
-   const shipping = subtotal >= cartData.shipping.freeThreshold ? 0 : 15.99;
-   const total = subtotal + shipping;
+   const { subtotal, savings, shipping, total } = calculateCartTotals(items);
 
    return (
       <>
