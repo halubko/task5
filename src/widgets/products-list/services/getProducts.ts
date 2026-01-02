@@ -1,4 +1,8 @@
-import { getAllProducts, getSearchedProducts } from "@/widgets/products-list/api/api";
+import {
+   getAllProducts,
+   getProductsByCategory,
+   getSearchedProducts,
+} from "@/widgets/products-list/api/api";
 
 interface GetProductsParams {
    sortBy?: string;
@@ -18,6 +22,8 @@ export async function getProducts(searchParams?: GetProductsParams) {
    if (searchParams?.q) {
       params.q = searchParams.q;
       return await getSearchedProducts(params);
+   } else if (searchParams?.category) {
+      return await getProductsByCategory(params, searchParams.category);
    } else {
       return await getAllProducts(params);
    }
