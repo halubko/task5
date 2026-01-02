@@ -32,14 +32,16 @@ export function ProductsFilter() {
    const [categoryValue, setCategoryValue] = useState<string>(searchParams.get("category") || "");
 
    const createQueryString = useCallback(
-      (name: string, value: string) => {
+      (newParams: { [key: string]: string }) => {
          const params = new URLSearchParams(searchParams.toString());
 
-         if (value) {
-            params.set(name, value);
-         } else {
-            params.delete(name);
-         }
+         Object.entries(newParams).forEach(([name, value]) => {
+            if (value) {
+               params.set(name, value);
+            } else {
+               params.delete(name);
+            }
+         });
 
          return params.toString();
       },
@@ -47,19 +49,19 @@ export function ProductsFilter() {
    );
 
    const handleSortChange = (value: string) => {
-      const queryString = createQueryString("order", value);
+      const queryString = createQueryString({ order: value });
       setSortValue(value);
       router.push(`${pathname}?${queryString}`);
    };
 
    const handleSearchChange = useDebouncedCallback((value: string) => {
-      const queryString = createQueryString("q", value);
+      const queryString = createQueryString({ q: value, category: "" });
       setSearchValue(value);
       router.push(`${pathname}?${queryString}`);
    }, 300);
 
    const handleCategoryChange = (value: string) => {
-      const queryString = createQueryString("category", value);
+      const queryString = createQueryString({ category: value, q: "" });
       setCategoryValue(value);
       router.push(`${pathname}?${queryString}`);
    };
