@@ -21,7 +21,7 @@ const ProductImagesCard = ({ title, images }: ProductInterface) => {
                <CarouselContent>
                   {images.map((image, index) => (
                      <CarouselItem key={index} className="flex justify-center items-center">
-                        <div className="relative w-full h-[500px]  md:h-[600px]">
+                        <div className="relative w-full h-125  md:h-150">
                            <Image
                               src={image}
                               alt={title + index}
