@@ -1,4 +1,4 @@
-import ShopCart from "@/widgets/shop-cart/ShopCart";
+import ShopCart from "@/widgets/shop-cart/components/ShopCart";
 
 const ShopCartPage = () => {
    return (

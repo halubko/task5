@@ -6,8 +6,9 @@ import { Card, CardContent } from "@/shared/components/ui/card";
 import { cartData } from "@/widgets/shop-cart/data/mock-data";
 import { ShopCartItem } from "@/entities/shop-cart/components/ShopCartItem";
 import { ShopCartInfo } from "@/widgets/shop-cart/components/ui/ShopCartInfo";
-import { useCartActions } from "@/widgets/shop-cart/utils/useCartActions";
-import { calculateCartTotals } from "@/widgets/shop-cart/utils/useSumCalculation";
+import { useCartActions } from "@/widgets/shop-cart/hooks/useCartActions";
+import { calculateCartTotals } from "@/widgets/shop-cart/hooks/useSumCalculation";
+import { EmptyShopCart } from "@/widgets/shop-cart/components/ui/EmptyShopCart";
 
 export default function ShopCart() {
    const { items, isRemoving, updateQuantity, removeItem } = useCartActions(cartData.items);
@@ -26,18 +27,7 @@ export default function ShopCart() {
          <div className="flex flex-col gap-8 lg:flex-row">
             <div className="flex-1 space-y-6">
                {items.length === 0 ? (
-                  <Card className="border-dashed">
-                     <CardContent className="flex flex-col items-center justify-center py-12 text-center">
-                        <ShoppingBag className="text-muted-foreground/50 mb-4 size-12" />
-                        <h3 className="text-lg font-medium">Your cart is empty</h3>
-                        <p className="text-muted-foreground mt-1 text-sm">
-                           Add some items to get started
-                        </p>
-                        <Button className="mt-4 cursor-pointer" variant="outline">
-                           Continue Shopping
-                        </Button>
-                     </CardContent>
-                  </Card>
+                  <EmptyShopCart />
                ) : (
                   <ShopCartItem
                      items={items}

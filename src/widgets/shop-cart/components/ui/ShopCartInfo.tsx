@@ -3,7 +3,7 @@ import { Separator } from "@/shared/components/ui/separator";
 import { Button } from "@/shared/components/ui/button";
 import { CreditCard, Shield, ShoppingBag } from "lucide-react";
 import type { CartInfo } from "@/widgets/shop-cart/interfaces/ShopCart.Interfaces";
-import { calculateCartTotals } from "@/widgets/shop-cart/utils/useSumCalculation";
+import { calculateCartTotals } from "@/widgets/shop-cart/hooks/useSumCalculation";
 
 export const ShopCartInfo = ({ items }: CartInfo) => {
    const { subtotal, savings, shipping, total } = calculateCartTotals(items);
