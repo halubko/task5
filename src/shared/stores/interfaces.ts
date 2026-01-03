@@ -14,3 +14,9 @@ export interface SignInDataResponse {
    accessToken: string;
    refreshToken: string;
 }
+
+export interface InitialStateData {
+   isLoggedIn: boolean;
+   user: SignInDataResponse | null;
+   me: () => Promise<void>;
+}
