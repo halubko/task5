@@ -1,8 +1,5 @@
 "use client";
 
-import { ShoppingBag } from "lucide-react";
-import { Button } from "@/shared/components/ui/button";
-import { Card, CardContent } from "@/shared/components/ui/card";
 import { cartData } from "@/widgets/shop-cart/data/mock-data";
 import { ShopCartItem } from "@/entities/shop-cart/components/ShopCartItem";
 import { ShopCartInfo } from "@/widgets/shop-cart/components/ui/ShopCartInfo";

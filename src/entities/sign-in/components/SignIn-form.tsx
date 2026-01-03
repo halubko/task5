@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from "@/shared/lib/utils";
 import { Button } from "@/shared/components/ui/button";
 import {
@@ -9,8 +11,18 @@ import {
 } from "@/shared/components/ui/card";
 import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/shared/components/ui/field";
 import { Input } from "@/shared/components/ui/input";
+import { useSignInStore } from "@/shared/stores/useSignInStore";
+import { useEffect } from "react";
 
 export function SignInForm({ className, ...props }: React.ComponentProps<"div">) {
+   const { isLoggedIn, user, me } = useSignInStore();
+
+   useEffect(() => {
+      me();
+   }, [me]);
+
+   console.log(isLoggedIn, user);
+
    return (
       <div
          className={cn(
