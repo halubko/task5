@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function MainLayout({ children }: { children: ReactNode }) {
    return (
       <>
-         <Header isMainPage />
+         <Header />
          <main>{children}</main>
       </>
    );

@@ -14,7 +14,7 @@ const ProfileDropdown = () => {
       <DropdownMenu>
          <DropdownMenuTrigger asChild>
             <Button variant="secondary">
-               Profile
+               <div className="hidden sm:block">Profile</div>
                <MoreHorizontalIcon />
             </Button>
          </DropdownMenuTrigger>

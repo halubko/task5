@@ -4,7 +4,11 @@ const nextConfig: NextConfig = {
    /* config options here */
    reactCompiler: true,
    images: {
-      domains: ["cdn.dummyjson.com"],
+      remotePatterns: [
+         {
+            hostname: "cdn.dummyjson.com",
+         },
+      ],
    },
 };
 

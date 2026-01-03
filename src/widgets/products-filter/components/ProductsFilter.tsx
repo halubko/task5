@@ -1,19 +1,24 @@
 "use client";
 
-import {
-   Sidebar,
-   SidebarContent,
-   SidebarHeader,
-   SidebarInput,
-   SidebarSeparator,
-} from "@/shared/components/ui/sidebar";
-import SidebarItem from "@/widgets/products-filter/components/ui/SidebarItem";
-import { Search } from "lucide-react";
+import { SidebarInput } from "@/shared/components/ui/sidebar";
+import SheetItem from "@/widgets/products-filter/components/ui/SheetItem";
+import { ListFilterPlus, Search } from "lucide-react";
 import { BasicSelector } from "@/shared/components/BasicSelector";
 import { sortValues } from "@/widgets/products-filter/data/sort-values";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
+import {
+   Sheet,
+   SheetContent,
+   SheetDescription,
+   SheetFooter,
+   SheetHeader,
+   SheetTitle,
+   SheetTrigger,
+} from "@/shared/components/ui/sheet";
+import { Button } from "@/shared/components/ui/button";
+import ProductCategories from "@/widgets/products-filter/components/ui/ProductCategories";
 
 export function ProductsFilter() {
    const router = useRouter();
@@ -22,18 +27,21 @@ export function ProductsFilter() {
    const preSearchParams = useSearchParams();
    const searchParams = useMemo(() => preSearchParams ?? new URLSearchParams(), [preSearchParams]);
 
-   const searchValue = searchParams.get("search") || "";
-   const sortValue = searchParams.get("sort") || "";
+   const [searchValue, setSearchValue] = useState<string>(searchParams.get("q") || "");
+   const [sortValue, setSortValue] = useState(searchParams.get("order") || "");
+   const [categoryValue, setCategoryValue] = useState<string>(searchParams.get("category") || "");
 
    const createQueryString = useCallback(
-      (name: string, value: string) => {
+      (newParams: { [key: string]: string }) => {
          const params = new URLSearchParams(searchParams.toString());
 
-         if (value) {
-            params.set(name, value);
-         } else {
-            params.delete(name);
-         }
+         Object.entries(newParams).forEach(([name, value]) => {
+            if (value) {
+               params.set(name, value);
+            } else {
+               params.delete(name);
+            }
+         });
 
          return params.toString();
       },
@@ -41,22 +49,44 @@ export function ProductsFilter() {
    );
 
    const handleSortChange = (value: string) => {
-      const queryString = createQueryString("sort", value);
+      const queryString = createQueryString({ order: value });
+      setSortValue(value);
       router.push(`${pathname}?${queryString}`);
    };
 
    const handleSearchChange = useDebouncedCallback((value: string) => {
-      const queryString = createQueryString("search", value);
+      const queryString = createQueryString({ q: value, category: "" });
+      setSearchValue(value);
       router.push(`${pathname}?${queryString}`);
-   }, 500);
+   }, 300);
+
+   const handleCategoryChange = (value: string) => {
+      const queryString = createQueryString({ category: value, q: "" });
+      setCategoryValue(value);
+      router.push(`${pathname}?${queryString}`);
+   };
+
+   const handleClear = () => {
+      setSearchValue("");
+      setCategoryValue("");
+      setSortValue("");
+      router.push("/");
+   };
 
    return (
-      <Sidebar>
-         <SidebarHeader>
-            <h2>Filters</h2>
-         </SidebarHeader>
-         <SidebarContent>
-            <SidebarItem label="Search">
+      <Sheet>
+         <SheetTrigger asChild>
+            <Button variant="outline" size="icon">
+               <ListFilterPlus />
+            </Button>
+         </SheetTrigger>
+         <SheetContent side="left">
+            <SheetHeader>
+               <SheetTitle>Filters</SheetTitle>
+            </SheetHeader>
+            {/*for solution aria-describedby warning*/}
+            <SheetDescription className="hidden">Filters</SheetDescription>
+            <SheetItem label="Search">
                <Search className="-translate-y-1/2 absolute top-1/2 left-3 h-4 w-4 text-muted-foreground" />
                <SidebarInput
                   className="bg-background pl-9"
@@ -66,19 +96,31 @@ export function ProductsFilter() {
                   defaultValue={searchValue}
                   onChange={(e) => handleSearchChange(e.target.value)}
                />
-            </SidebarItem>
-            <SidebarSeparator />
-            <SidebarItem label="Sort by">
-               {/* add real data */}
+            </SheetItem>
+            <SheetItem label="Price sort by">
                <BasicSelector
-                  basicValue="Sort by"
+                  basicValue="Order"
                   values={sortValues}
                   value={sortValue}
                   onValueChange={handleSortChange}
                />
-            </SidebarItem>
-            <SidebarSeparator />
-         </SidebarContent>
-      </Sidebar>
+            </SheetItem>
+            <div className="overflow-y-auto">
+               <SheetItem label="Category">
+                  <ProductCategories onValueChange={handleCategoryChange} value={categoryValue} />
+               </SheetItem>
+            </div>
+            <SheetFooter className="flex">
+               <Button
+                  onClick={() => handleCategoryChange("")}
+                  className="mt-2 w-full"
+                  variant="outline"
+               >
+                  Clear category
+               </Button>
+               <Button onClick={handleClear}>Clear all</Button>
+            </SheetFooter>
+         </SheetContent>
+      </Sheet>
    );
 }
