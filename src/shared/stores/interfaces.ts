@@ -18,5 +18,7 @@ export interface SignInDataResponse {
 export interface InitialStateData {
    isLoggedIn: boolean;
    user: SignInDataResponse | null;
-   me: () => Promise<void>;
+   me: () => Promise<boolean>;
+   signIn: (email: string, password: string) => Promise<unknown>;
+   initialize: () => Promise<void>;
 }
