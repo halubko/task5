@@ -1,10 +1,7 @@
 import ProductsList from "@/widgets/products-list/components/ProductsList";
+import type { MainPageInterface } from "@/pages/main/interfaces/mainPage.interfaces";
 
-interface MainPageProps {
-   searchParams?: { [key: string]: string | undefined };
-}
-
-const MainPage = ({ searchParams }: MainPageProps) => {
+const MainPage = ({ searchParams }: MainPageInterface) => {
    return <ProductsList searchParams={searchParams} />;
 };
 
