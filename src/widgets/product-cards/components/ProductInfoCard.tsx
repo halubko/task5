@@ -7,14 +7,9 @@ import {
 } from "@/shared/components/ui/card";
 import { ProductRating } from "@/entities/product/components/ProductRating";
 import AddToCartButton from "@/features/add-to-cart/components/AddToCartButton";
+import type { ProductInfoCardInterface } from "@/widgets/product-cards/interfaces/product.interfaces";
 
-interface ProductInfoCardProps {
-   description: string;
-   rating: number;
-   price: number;
-}
-
-const ProductInfoCard = ({ description, rating, price }: ProductInfoCardProps) => {
+const ProductInfoCard = ({ description, rating, price }: ProductInfoCardInterface) => {
    return (
       <Card className="h-fit">
          <CardContent>

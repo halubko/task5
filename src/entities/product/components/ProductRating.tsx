@@ -2,16 +2,10 @@
 
 import { Star } from "lucide-react";
 import { cn } from "@/shared/lib/utils";
-import { forwardRef, type InputHTMLAttributes, useState } from "react";
+import { forwardRef, useState } from "react";
+import type { ProductRatingInterface } from "@/entities/product/interfaces/rating.interfaces";
 
-interface RatingProps extends InputHTMLAttributes<HTMLDivElement> {
-   rating: number;
-   onRate?: (rating: number) => void;
-   editable?: boolean;
-}
-
-// Add adaptive
-export const ProductRating = forwardRef<HTMLDivElement, RatingProps>(
+export const ProductRating = forwardRef<HTMLDivElement, ProductRatingInterface>(
    ({ rating, onRate, editable = false, ...props }, ref) => {
       const [hoverRating, setHoverRating] = useState(0);
       const currentRating = hoverRating || rating;

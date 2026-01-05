@@ -1,11 +1,8 @@
 import ProductShortCard from "@/widgets/product-cards/components/ProductShortCard";
 import { getProducts } from "@/widgets/products-list/services/getProducts";
+import type { ProductsListInterface } from "@/widgets/products-list/interfaces/productsList.interfaces";
 
-interface ProductsListProps {
-   searchParams?: { [key: string]: string | undefined };
-}
-
-const ProductsList = async ({ searchParams }: ProductsListProps) => {
+const ProductsList = async ({ searchParams }: ProductsListInterface) => {
    const { products } = await getProducts(searchParams);
 
    return (

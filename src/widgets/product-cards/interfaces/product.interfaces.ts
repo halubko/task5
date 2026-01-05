@@ -9,3 +9,9 @@ export interface ProductInterface {
    images: string[];
    reviews: ReviewInterface[];
 }
+
+export interface ProductInfoCardInterface {
+   description: string;
+   rating: number;
+   price: number;
+}
