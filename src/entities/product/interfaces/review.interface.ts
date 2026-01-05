@@ -4,3 +4,11 @@ export interface ReviewInterface {
    date: string;
    reviewerName: string;
 }
+
+export interface ProductReviewsCardInterface {
+   reviews: ReviewInterface[];
+}
+
+export interface ProductSingleReviewInterface {
+   review: ReviewInterface;
+}

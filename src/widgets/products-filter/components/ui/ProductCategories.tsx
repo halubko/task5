@@ -4,13 +4,9 @@ import { useEffect, useState } from "react";
 import { Label } from "@/shared/components/ui/label";
 import { capitalizeFirstLetter } from "@/shared/utils/helpers";
 import { Spinner } from "@/shared/components/ui/spinner";
+import type { ProductCategoriesInterface } from "@/widgets/products-filter/interfaces/productFilter.interfaces";
 
-interface ProductCategoriesProps {
-   onValueChange: (value: string) => void;
-   value: string;
-}
-
-const ProductCategories = ({ onValueChange, value }: ProductCategoriesProps) => {
+const ProductCategories = ({ onValueChange, value }: ProductCategoriesInterface) => {
    const [categories, setCategories] = useState<string[]>();
 
    useEffect(() => {

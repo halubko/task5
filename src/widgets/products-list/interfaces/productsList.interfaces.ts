@@ -12,3 +12,7 @@ export interface ProductParamsInterface {
    order?: string;
    q?: string;
 }
+
+export interface ProductsListInterface {
+   searchParams?: { [key: string]: string | undefined };
+}

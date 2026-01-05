@@ -7,14 +7,9 @@ import {
 } from "@/shared/components/ui/carousel";
 import Link from "next/link";
 import Image from "next/image";
+import type { ProductImagesInterface } from "@/entities/product/interfaces/images.interfaces";
 
-interface ProductImagesProps {
-   images: string[];
-   id: number;
-   title: string;
-}
-
-const ProductImages = ({ images, id, title }: ProductImagesProps) => {
+const ProductImages = ({ images, id, title }: ProductImagesInterface) => {
    return (
       <Carousel className="w-full">
          <CarouselContent className="mx-auto">

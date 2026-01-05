@@ -2,7 +2,6 @@ import {
    Card,
    CardAction,
    CardContent,
-   // CardDescription,
    CardFooter,
    CardHeader,
    CardTitle,
@@ -13,13 +12,7 @@ import Link from "next/link";
 import AddToCartButton from "@/features/add-to-cart/components/AddToCartButton";
 import ProductImages from "@/entities/product/components/ProductImages";
 
-const ProductShortCard = ({
-   title,
-   price,
-   /*description,*/ images,
-   rating,
-   id,
-}: ProductInterface) => {
+const ProductShortCard = ({ title, price, images, rating, id }: ProductInterface) => {
    return (
       <Card>
          <CardHeader>
@@ -30,9 +23,6 @@ const ProductShortCard = ({
          <CardContent>
             <ProductImages images={images} id={id} title={title} />
             <Link href={`/${id}`}>
-               {/*<CardDescription className="text-ellipsis overflow-hidden line-clamp-3">*/}
-               {/*   {description}*/}
-               {/*</CardDescription>*/}
                <div className="w-full flex justify-between">
                   <div className="mt-2">{price}$</div>
                   <span className="mt-2 flex gap-1">{<ProductRating rating={rating} />}</span>

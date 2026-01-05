@@ -20,7 +20,7 @@ const ProductImagesCard = ({ title, images }: ProductInterface) => {
             <Carousel className="w-full">
                <CarouselContent>
                   {images.map((image, index) => (
-                     <CarouselItem key={index} className="flex justify-center items-center">
+                     <CarouselItem key={image} className="flex justify-center items-center">
                         <div className="relative w-full h-125  md:h-150">
                            <Image
                               src={image}

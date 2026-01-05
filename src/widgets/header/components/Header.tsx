@@ -6,11 +6,7 @@ import Link from "next/link";
 import BackButton from "@/features/go-back/components/BackButton";
 import { ProductsFilter } from "@/widgets/products-filter/components/ProductsFilter";
 
-interface HeaderProps {
-   isMainPage?: boolean;
-}
-
-const Header = ({ isMainPage = false }: HeaderProps) => {
+const Header = ({ isMainPage = false }: { isMainPage?: boolean }) => {
    return (
       <header className="grid grid-cols-2 items-center p-2 sticky top-0 z-10">
          <div className="flex items-center gap-2">
