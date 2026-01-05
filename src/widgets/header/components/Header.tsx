@@ -17,7 +17,7 @@ const Header = ({ isMainPage = false }: { isMainPage?: boolean }) => {
          </div>
          <div className="flex gap-2 justify-end items-center">
             <ThemeToggleButton />
-            <Link href="/cart">
+            <Link href="/shopCart">
                <Button>
                   <ShoppingCartIcon />
                   Cart
