@@ -67,6 +67,10 @@ export const useSignInStore = create<InitialStateData>((set, get) => ({
          return false;
       }
    },
+   signOut: async () => {
+      localStorage.removeItem("authToken");
+      set({ isLoggedIn: false, user: null });
+   },
    initialize: async () => {
       await get().me();
    },
