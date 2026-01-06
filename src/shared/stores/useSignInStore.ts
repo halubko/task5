@@ -24,10 +24,8 @@ export const useSignInStore = create<InitialStateData>((set, get) => ({
          }
 
          const response = await axiosInstance.get("/auth/me", {
-            method: "GET",
             headers: {
                Authorization: `Bearer ${token}`,
-               "Content-Type": "application/json",
             },
          });
          set({
