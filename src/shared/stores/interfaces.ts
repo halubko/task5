@@ -21,4 +21,5 @@ export interface InitialStateData {
    me: () => Promise<boolean>;
    signIn: (email: string, password: string) => Promise<unknown>;
    initialize: () => Promise<void>;
+   refreshToken: () => Promise<void>;
 }
