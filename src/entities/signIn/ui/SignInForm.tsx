@@ -1,18 +1,12 @@
 "use client";
 
 import { cn } from "@/shared/lib/utils";
-import { Button } from "@/shared/components/ui/button";
-import {
-   Card,
-   CardContent,
-   CardDescription,
-   CardHeader,
-   CardTitle,
-} from "@/shared/components/ui/card";
-import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/shared/components/ui/field";
-import { Input } from "@/shared/components/ui/input";
-import { useSignInStore } from "@/shared/stores/useSignInStore";
+import { Button } from "@/shared/ui/shadcn/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared/ui/shadcn/card";
+import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/shared/ui/shadcn/field";
+import { Input } from "@/shared/ui/shadcn/input";
 import { useEffect, useState } from "react";
+import { useSignInStore } from "@/shared/stores/useSignInStore";
 import { useRouter } from "next/navigation";
 
 export function SignInForm({ className, ...props }: React.ComponentProps<"div">) {

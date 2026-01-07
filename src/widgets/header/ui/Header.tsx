@@ -1,10 +1,10 @@
-import { Button } from "@/shared/components/ui/button";
+import { Button } from "@/shared/ui/shadcn/button";
 import { ShoppingCartIcon } from "lucide-react";
-import { ThemeToggleButton } from "@/features/toggle-theme/components/ThemeToogleButton";
-import AuthButton from "@/widgets/header/components/ui/AuthButton";
+import { ThemeToggleButton } from "@/features/toggleTheme/ui/ThemeToogleButton";
 import Link from "next/link";
-import BackButton from "@/features/go-back/components/BackButton";
-import { ProductsFilter } from "@/widgets/products-filter/components/ProductsFilter";
+import BackButton from "@/features/goBack/ui/BackButton";
+import { ProductsFilter } from "@/widgets/productsFilter/ui/ProductsFilter";
+import AuthButton from "@/widgets/header/ui/AuthButton";
 
 const Header = ({ isMainPage = false }: { isMainPage?: boolean }) => {
    return (

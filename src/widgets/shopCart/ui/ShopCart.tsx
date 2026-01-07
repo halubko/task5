@@ -1,11 +1,11 @@
 "use client";
 
-import { cartData } from "@/widgets/shop-cart/data/mock-data";
-import { ShopCartItem } from "@/entities/shop-cart/components/ShopCartItem";
-import { ShopCartInfo } from "@/widgets/shop-cart/components/ui/ShopCartInfo";
-import { useCartActions } from "@/widgets/shop-cart/hooks/useCartActions";
-import { calculateCartTotals } from "@/widgets/shop-cart/hooks/useSumCalculation";
-import { EmptyShopCart } from "@/widgets/shop-cart/components/ui/EmptyShopCart";
+import { cartData } from "@/widgets/shopCart/data/mockData";
+import { ShopCartItem } from "@/entities/shopCart/ui/ShopCartItem";
+import { ShopCartInfo } from "@/widgets/shopCart/ui/ShopCartInfo";
+import { useCartActions } from "@/widgets/shopCart/hooks/useCartActions";
+import { calculateCartTotals } from "@/widgets/shopCart/hooks/useSumCalculation";
+import { EmptyShopCart } from "@/widgets/shopCart/ui/EmptyShopCart";
 
 export default function ShopCart() {
    const { items, isRemoving, updateQuantity, removeItem } = useCartActions(cartData.items);
