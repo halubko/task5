@@ -3,7 +3,7 @@ import { BASE_URL } from "@/shared/constants/constants";
 import type {
    ProductParamsInterface,
    ProductsListResponseInterface,
-} from "@/widgets/products-list/interfaces/productsList.interfaces";
+} from "@/widgets/productsList/interfaces/productsList";
 
 const axiosInstance = axios.create({
    baseURL: BASE_URL + "products",

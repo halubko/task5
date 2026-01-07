@@ -1,4 +1,4 @@
-import ProductsList from "@/widgets/products-list/components/ProductsList";
+import ProductsList from "@/widgets/productsList/ui/ProductsList";
 import type { MainPageInterface } from "@/pages/main/interfaces/mainPage";
 
 const MainPage = ({ searchParams }: MainPageInterface) => {
