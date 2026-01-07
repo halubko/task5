@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import Header from "@/widgets/header/ui/Header";
 
 export const metadata: Metadata = {
    title: "Shop",
@@ -9,7 +8,6 @@ export const metadata: Metadata = {
 export default function MainLayout({ children }: { children: ReactNode }) {
    return (
       <>
-         <Header />
          <main>{children}</main>
       </>
    );
