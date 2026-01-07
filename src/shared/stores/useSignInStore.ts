@@ -1,6 +1,7 @@
 import { create } from "zustand/react";
 import type { InitialStateData } from "@/shared/stores/interfaces";
 import axios, { AxiosError } from "axios";
+import { toast } from "sonner";
 
 const axiosInstance = axios.create({
    // baseURL: BASE_URL,
@@ -105,7 +106,9 @@ export const useSignInStore = create<InitialStateData>((set, get) => ({
    },
    signOut: async () => {
       localStorage.removeItem("authToken");
+      localStorage.removeItem("refreshToken");
       set({ isLoggedIn: false, user: null });
+      toast.success("Signed Out");
    },
    initialize: async () => {
       await get().me();
