@@ -8,6 +8,7 @@ interface GetProductsParams {
    sortBy?: string;
    order?: string;
    q?: string;
+   category?: string;
    [key: string]: string | undefined;
 }
 
@@ -24,6 +25,9 @@ export async function getProducts(skip: number = 0, searchParams?: GetProductsPa
 
    if (searchParams?.q) {
       params.q = searchParams.q;
+   }
+
+   if (searchParams?.q) {
       return await getSearchedProducts(params);
    } else if (searchParams?.category) {
       return await getProductsByCategory(params, searchParams.category);

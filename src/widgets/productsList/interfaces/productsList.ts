@@ -14,3 +14,13 @@ export interface ProductParamsInterface {
    limit?: number;
    skip?: number;
 }
+
+export interface InitialStoreInterface {
+   products: ProductInterface[];
+   skip: number;
+   stopLoading: boolean;
+   updateProducts: (products: ProductInterface[]) => void;
+   updateSkip: (skip: number) => void;
+   clearStates: () => void;
+   setLoading: (value: boolean) => void;
+}
