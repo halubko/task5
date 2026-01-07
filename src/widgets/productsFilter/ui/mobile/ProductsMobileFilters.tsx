@@ -10,7 +10,6 @@ import {
 import { Button } from "@/shared/ui/shadcn/button";
 import { ListFilterPlus, Search } from "lucide-react";
 import SheetItem from "@/widgets/productsFilter/ui/mobile/SheetItem";
-import ProductSearchInput from "@/entities/product/ui/ProductSearchInput";
 import { BasicSelector } from "@/shared/ui/BasicSelector";
 import { sortValues } from "@/widgets/productsFilter/data/sortValues";
 import ProductCategories from "@/widgets/productsFilter/ui/ProductCategories";
