@@ -1,8 +1,8 @@
 "use client";
 
-import { Button } from "@/shared/components/ui/button";
 import { useSignInStore } from "@/shared/stores/useSignInStore";
 import Link from "next/link";
+import { Button } from "@/shared/ui/shadcn/button";
 
 const AuthButton = () => {
    const { isLoggedIn, signOut } = useSignInStore();
