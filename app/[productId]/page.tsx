@@ -1,4 +1,4 @@
-import ProductPage from "@/pages/product-page/components/ProductPage";
+import ProductPage from "@/pages/productPage/ui/ProductPage";
 
 interface ProductPageProps {
    params: Promise<{
