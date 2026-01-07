@@ -24,3 +24,11 @@ export interface InitialStoreInterface {
    clearStates: () => void;
    setLoading: (value: boolean) => void;
 }
+
+export interface GetProductsParams {
+   sortBy?: string;
+   order?: string;
+   q?: string;
+   category?: string;
+   [key: string]: string | undefined;
+}

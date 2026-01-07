@@ -3,14 +3,7 @@ import {
    getProductsByCategory,
    getSearchedProducts,
 } from "@/widgets/productsList/api/api";
-
-interface GetProductsParams {
-   sortBy?: string;
-   order?: string;
-   q?: string;
-   category?: string;
-   [key: string]: string | undefined;
-}
+import type { GetProductsParams } from "@/widgets/productsList/interfaces/productsList";
 
 export async function getProducts(skip: number = 0, searchParams?: GetProductsParams) {
    const params: Record<string, string | number> = {
