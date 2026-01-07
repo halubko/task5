@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Toaster } from "@/shared/components/ui/sonner";
+import { Toaster } from "@/shared/ui/shadcn/sonner";
 import type { ReactNode } from "react";
 import { ThemeProvider } from "next-themes";
 import "@/app/styles/global.css";

@@ -1,4 +1,4 @@
-import ProductShortCard from "@/widgets/product-cards/components/ProductShortCard";
+import ProductShortCard from "@/widgets/productCards/ui/ProductShortCard";
 import { getProducts } from "@/widgets/products-list/services/getProducts";
 import type { ProductsListInterface } from "@/widgets/products-list/interfaces/productsList.interfaces";
 
