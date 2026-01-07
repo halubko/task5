@@ -8,13 +8,15 @@ import {
    SheetTrigger,
 } from "@/shared/ui/shadcn/sheet";
 import { Button } from "@/shared/ui/shadcn/button";
-import { ListFilterPlus } from "lucide-react";
+import { ListFilterPlus, Search } from "lucide-react";
 import SheetItem from "@/widgets/productsFilter/ui/mobile/SheetItem";
 import ProductSearchInput from "@/entities/product/ui/ProductSearchInput";
 import { BasicSelector } from "@/shared/ui/BasicSelector";
 import { sortValues } from "@/widgets/productsFilter/data/sortValues";
 import ProductCategories from "@/widgets/productsFilter/ui/ProductCategories";
 import type { FilterInterface } from "@/widgets/productsFilter/interfaces/productFilter";
+import { Input } from "@/shared/ui/shadcn/input";
+import InputWithIcon from "@/shared/ui/InputWithIcon";
 
 const ProductsMobileFilters = ({
    searchValue,
@@ -40,10 +42,16 @@ const ProductsMobileFilters = ({
             {/*for solution aria-describedby warning*/}
             <SheetDescription className="hidden">Filters</SheetDescription>
             <SheetItem label="Search">
-               <ProductSearchInput
-                  searchValue={searchValue}
-                  handleSearchChange={handleSearchChange}
-               />
+               <InputWithIcon Icon={Search}>
+                  <Input
+                     className="bg-background pl-9"
+                     id="search-input"
+                     placeholder="Search..."
+                     type="search"
+                     value={searchValue}
+                     onChange={(e) => handleSearchChange(e.target.value)}
+                  />
+               </InputWithIcon>
             </SheetItem>
             <SheetItem label="Price sort by">
                <BasicSelector
