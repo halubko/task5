@@ -9,6 +9,7 @@ import { useInView } from "react-intersection-observer";
 import { Spinner } from "@/shared/ui/shadcn/spinner";
 import { useSearchParams } from "next/navigation";
 import { useProductList } from "@/widgets/productsList/store/productList";
+import NotFoundCard from "@/entities/product/ui/NotFoundCard";
 
 interface IProductsList {
    initialProducts: ProductInterface[];
@@ -61,9 +62,11 @@ const ProductsList = ({ initialProducts }: IProductsList) => {
 
    return (
       <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 row-auto p-2 gap-2 max-w-7xl mx-auto">
-         {products.map((product) => (
-            <ProductShortCard key={product.id} {...product} />
-         ))}
+         {products.length > 1 ? (
+            products.map((product) => <ProductShortCard key={product.id} {...product} />)
+         ) : (
+            <NotFoundCard />
+         )}
          {products.length > 0 && !stopLoading && (
             <div ref={ref} className="col-span-full flex justify-center ">
                <Spinner />
