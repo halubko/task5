@@ -2,7 +2,7 @@ import {
    getAllProducts,
    getProductsByCategory,
    getSearchedProducts,
-} from "@/widgets/products-list/api/api";
+} from "@/widgets/productsList/api/api";
 
 interface GetProductsParams {
    sortBy?: string;
