@@ -8,7 +8,7 @@ import AuthButton from "@/widgets/header/ui/AuthButton";
 
 const Header = ({ isMainPage = false }: { isMainPage?: boolean }) => {
    return (
-      <header className="grid grid-cols-2 items-center p-2 sticky top-0 z-10">
+      <header className="grid grid-cols-2 items-center p-2 sticky top-0 z-10 backdrop-blur">
          <div className="flex items-center gap-2">
             {isMainPage ? <ProductsFilter /> : <BackButton />}
             <Link href="/" className="flex items-center">
