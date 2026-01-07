@@ -22,4 +22,5 @@ export interface InitialStateData {
    signIn: (email: string, password: string) => Promise<unknown>;
    initialize: () => Promise<void>;
    refreshToken: () => Promise<void>;
+   signOut: () => Promise<void>;
 }
