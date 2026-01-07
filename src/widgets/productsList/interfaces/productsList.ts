@@ -21,7 +21,7 @@ export interface InitialStoreInterface {
    stopLoading: boolean;
    updateProducts: (products: ProductInterface[]) => void;
    updateSkip: (skip: number) => void;
-   clearStates: () => void;
+   reset: () => void;
    setLoading: (value: boolean) => void;
 }
 

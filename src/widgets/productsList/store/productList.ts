@@ -12,7 +12,7 @@ export const useProductList = create<InitialStoreInterface>((set) => ({
 
    updateSkip: (arg: number) => set((state) => ({ skip: state.skip + arg })),
 
-   clearStates: () => set(() => ({ products: [], skip: 0, stopLoading: false })),
+   reset: () => set(() => ({ products: [], skip: 0, stopLoading: false })),
 
    setLoading: (arg: boolean) => set(() => ({ stopLoading: arg })),
 }));

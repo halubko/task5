@@ -2,7 +2,7 @@
 
 import ProductShortCard from "@/widgets/productCards/ui/ProductShortCard";
 import type { ProductInterface } from "@/widgets/productCards/interfaces/product";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { getProducts } from "@/widgets/productsList/services/getProducts";
 import { NUMBER_OF_PRODUCTS_TO_FETCH } from "@/widgets/productsList/constants/constants";
 import { useInView } from "react-intersection-observer";
@@ -16,17 +16,29 @@ interface IProductsList {
 }
 
 const ProductsList = ({ initialProducts }: IProductsList) => {
-   const { products, skip, updateProducts, updateSkip, clearStates, setLoading, stopLoading } =
+   const { products, skip, updateProducts, updateSkip, reset, setLoading, stopLoading } =
       useProductList();
    const { ref, inView } = useInView();
    const searchParams = useSearchParams();
    const searchParamsString = searchParams?.toString() ?? "";
    const params = searchParams ? Object.fromEntries(searchParams.entries()) : {};
+   const prevSearchParams = useRef(searchParamsString);
 
    useEffect(() => {
-      updateProducts(initialProducts);
-      updateSkip(NUMBER_OF_PRODUCTS_TO_FETCH);
-   }, []);
+      if (prevSearchParams.current !== searchParamsString) {
+         reset();
+         getProducts(0, params).then((response) => {
+            if (response) {
+               updateProducts(response.products);
+               updateSkip(NUMBER_OF_PRODUCTS_TO_FETCH);
+            }
+         });
+         prevSearchParams.current = searchParamsString;
+      } else if (!searchParamsString && products.length === 0) {
+         updateProducts(initialProducts);
+         updateSkip(NUMBER_OF_PRODUCTS_TO_FETCH);
+      }
+   }, [searchParamsString]);
 
    const loadMoreProducts = async () => {
       if (searchParams) {
@@ -42,17 +54,6 @@ const ProductsList = ({ initialProducts }: IProductsList) => {
          }
       }
    };
-
-   useEffect(() => {
-      clearStates();
-
-      getProducts(0, params).then((response) => {
-         if (response) {
-            updateProducts(response.products);
-            updateSkip(NUMBER_OF_PRODUCTS_TO_FETCH);
-         }
-      });
-   }, [searchParamsString]);
 
    useEffect(() => {
       if (inView && skip > 0) {
