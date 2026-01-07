@@ -11,8 +11,11 @@ interface GetProductsParams {
    [key: string]: string | undefined;
 }
 
-export async function getProducts(searchParams?: GetProductsParams) {
-   const params: Record<string, string> = {};
+export async function getProducts(skip: number = 0, searchParams?: GetProductsParams) {
+   const params: Record<string, string | number> = {
+      limit: 12,
+      skip: skip,
+   };
 
    if (searchParams?.order) {
       params.sortBy = "price";

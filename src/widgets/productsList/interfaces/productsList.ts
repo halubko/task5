@@ -11,8 +11,6 @@ export interface ProductParamsInterface {
    sortBy?: string;
    order?: string;
    q?: string;
-}
-
-export interface ProductsListInterface {
-   searchParams?: { [key: string]: string | undefined };
+   limit?: number;
+   skip?: number;
 }

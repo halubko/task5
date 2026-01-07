@@ -11,10 +11,14 @@ const axiosInstance = axios.create({
 
 // Basic get posts. Should be changed for pagination / infinite scroll
 export const getAllProducts = async (params: ProductParamsInterface) => {
-   const response: AxiosResponse<ProductsListResponseInterface> = await axiosInstance.get("", {
-      params,
-   });
-   return response.data;
+   try {
+      const response: AxiosResponse<ProductsListResponseInterface> = await axiosInstance.get("", {
+         params,
+      });
+      return response.data;
+   } catch (error) {
+      console.error(error);
+   }
 };
 
 export const getSearchedProducts = async (params: ProductParamsInterface) => {
