@@ -1,7 +1,7 @@
 import { Button } from "@/shared/components/ui/button";
 import { ShoppingCartIcon } from "lucide-react";
 import { ThemeToggleButton } from "@/features/toggle-theme/components/ThemeToogleButton";
-import ProfileDropdown from "@/widgets/header/components/ui/ProfileDropdown";
+import AuthButton from "@/widgets/header/components/ui/AuthButton";
 import Link from "next/link";
 import BackButton from "@/features/go-back/components/BackButton";
 import { ProductsFilter } from "@/widgets/products-filter/components/ProductsFilter";
@@ -23,7 +23,7 @@ const Header = ({ isMainPage = false }: { isMainPage?: boolean }) => {
                   Cart
                </Button>
             </Link>
-            <ProfileDropdown />
+            <AuthButton />
          </div>
       </header>
    );
