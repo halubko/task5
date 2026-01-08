@@ -18,7 +18,7 @@ export function ProductsFilter() {
    }
 
    return (
-      <div className="fixed top-14 left-2">
+      <div className="fixed top-14 right-2">
          <ProductsMobileFilters {...filters} />
       </div>
    );

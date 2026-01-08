@@ -29,12 +29,12 @@ const ProductsMobileFilters = ({
 }: FilterInterface) => {
    return (
       <Sheet>
-         <SheetTrigger asChild>
-            <Button size="icon" className="p-2 backdrop-blur-2xl">
+         <SheetTrigger asChild className="p-2 backdrop-blur-2xl">
+            <Button size="icon">
                <ListFilterPlus />
             </Button>
          </SheetTrigger>
-         <SheetContent side="left">
+         <SheetContent side="right">
             <SheetHeader>
                <SheetTitle>Filters</SheetTitle>
             </SheetHeader>
