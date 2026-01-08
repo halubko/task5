@@ -1,9 +1,15 @@
+//TODO delete unused interface
 export interface SignInData {
    username: string;
    password: string;
 }
 
-export interface SignInDataResponse {
+export interface RefreshTokenInterface {
+   accessToken: string;
+   refreshToken: string;
+}
+
+export interface SignInDataResponse extends RefreshTokenInterface {
    id: number;
    username: string;
    email: string;
@@ -11,16 +17,11 @@ export interface SignInDataResponse {
    lastName: string;
    gender: string;
    image: string;
-   accessToken: string;
-   refreshToken: string;
 }
 
 export interface InitialStateData {
    isLoggedIn: boolean;
    user: SignInDataResponse | null;
-   me: () => Promise<boolean>;
-   signIn: (email: string, password: string) => Promise<unknown>;
-   initialize: () => Promise<void>;
-   refreshToken: () => Promise<void>;
    signOut: () => Promise<void>;
+   setUser: (userData: SignInDataResponse) => void;
 }
