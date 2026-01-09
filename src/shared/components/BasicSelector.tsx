@@ -1,5 +1,3 @@
-"use client";
-
 import {
    Select,
    SelectContent,
@@ -8,6 +6,7 @@ import {
    SelectTrigger,
    SelectValue,
 } from "@/shared/components/ui/select";
+import { capitalizeFirstLetter } from "@/shared/utils/helpers";
 
 interface BasicSelectorProps {
    basicValue: string;
@@ -19,7 +18,6 @@ interface BasicSelectorProps {
 export function BasicSelector({ basicValue, values, value, onValueChange }: BasicSelectorProps) {
    const handleValueChange = (selectedValue: string) => {
       if (onValueChange) {
-         // Если выбрано "None", передаем undefined чтобы сбросить селектор
          if (selectedValue === "none") {
             onValueChange("");
          } else {
@@ -29,20 +27,16 @@ export function BasicSelector({ basicValue, values, value, onValueChange }: Basi
    };
 
    return (
-      <Select
-         value={value} // value может быть undefined
-         onValueChange={handleValueChange}
-      >
+      <Select value={value} onValueChange={handleValueChange}>
          <SelectTrigger className="w-full">
             <SelectValue placeholder={basicValue} />
          </SelectTrigger>
          <SelectContent>
             <SelectGroup>
-               {/* None с фиксированным значением */}
                <SelectItem value="none">None</SelectItem>
                {values.map((value) => (
                   <SelectItem value={value} key={value}>
-                     {value}
+                     {capitalizeFirstLetter(value)}
                   </SelectItem>
                ))}
             </SelectGroup>

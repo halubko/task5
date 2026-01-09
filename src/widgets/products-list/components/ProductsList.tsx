@@ -1,20 +1,14 @@
-import { getAllProducts } from "@/widgets/products-list/api/api";
-import ProductCard from "@/entities/product/components/ProductCard";
+import ProductShortCard from "@/widgets/product-cards/components/ProductShortCard";
+import { getProducts } from "@/widgets/products-list/services/getProducts";
+import type { ProductsListInterface } from "@/widgets/products-list/interfaces/productsList.interfaces";
 
-interface ProductsListProps {
-   searchParams?: { [key: string]: string | undefined };
-}
-
-const ProductsList = async ({ searchParams }: ProductsListProps) => {
-   const { products } = await getAllProducts({
-      search: searchParams?.search,
-      sortBy: searchParams?.sort,
-   });
+const ProductsList = async ({ searchParams }: ProductsListInterface) => {
+   const { products } = await getProducts(searchParams);
 
    return (
-      <div className="grid grid-cols-4 row-auto p-2 gap-2">
+      <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 row-auto p-2 gap-2">
          {products.map((product) => (
-            <ProductCard key={product.id} {...product} />
+            <ProductShortCard key={product.id} {...product} />
          ))}
       </div>
    );
