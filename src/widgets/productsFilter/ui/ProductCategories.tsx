@@ -10,7 +10,6 @@ const ProductCategories = ({ onValueChange, value }: ProductCategoriesInterface)
    const [categories, setCategories] = useState<string[]>();
 
    useEffect(() => {
-      // Should be cached (sending request every sheet open). SSG?
       getProductCategoryList().then((categories) => {
          setCategories(categories);
       });

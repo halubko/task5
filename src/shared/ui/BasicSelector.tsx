@@ -7,15 +7,15 @@ import {
    SelectValue,
 } from "@/shared/ui/shadcn/select";
 import { capitalizeFirstLetter } from "@/shared/utils/helpers";
+import type { BasicSelectorInterface } from "@/shared/interfaces/baseSelector";
 
-interface BasicSelectorProps {
-   basicValue: string;
-   values: string[];
-   value?: string;
-   onValueChange?: (value: string) => void;
-}
-
-export function BasicSelector({ basicValue, values, value, onValueChange }: BasicSelectorProps) {
+export function BasicSelector({
+   basicValue,
+   values,
+   value,
+   onValueChange,
+   className,
+}: BasicSelectorInterface) {
    const handleValueChange = (selectedValue: string) => {
       if (onValueChange) {
          if (selectedValue === "none") {
@@ -28,7 +28,7 @@ export function BasicSelector({ basicValue, values, value, onValueChange }: Basi
 
    return (
       <Select value={value} onValueChange={handleValueChange}>
-         <SelectTrigger className="w-full">
+         <SelectTrigger className={className + " w-full"}>
             <SelectValue placeholder={basicValue} />
          </SelectTrigger>
          <SelectContent>
