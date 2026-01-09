@@ -11,5 +11,4 @@ const Page = async ({ params }: ProductPageProps) => {
    return <ProductPage productId={Number(productId)} />;
 };
 
-Page.hideSidebar = true;
 export default Page;
