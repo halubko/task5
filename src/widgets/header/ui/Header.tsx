@@ -3,7 +3,7 @@ import { ShoppingCartIcon } from "lucide-react";
 import { ThemeToggleButton } from "@/features/toggleTheme/ui/ThemeToogleButton";
 import Link from "next/link";
 import BackButton from "@/features/goBack/ui/BackButton";
-import AuthButton from "@/widgets/header/ui/AuthButton";
+import AuthButton from "@/features/authButton/ui/AuthButton";
 
 const Header = () => {
    return (

@@ -3,6 +3,7 @@ import { Toaster } from "@/shared/ui/shadcn/sonner";
 import type { ReactNode } from "react";
 import { ThemeProvider } from "next-themes";
 import "@/app/styles/global.css";
+import AuthProvider from "@/app/providers/AuthProvider";
 
 export const metadata: Metadata = {
    title: "Shop",
@@ -19,7 +20,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                enableSystem
                disableTransitionOnChange
             >
-               {children}
+               <AuthProvider>{children}</AuthProvider>
                <Toaster position="top-right" />
             </ThemeProvider>
          </body>

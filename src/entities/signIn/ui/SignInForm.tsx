@@ -5,12 +5,14 @@ import { Button } from "@/shared/ui/shadcn/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/shared/ui/shadcn/card";
 import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/shared/ui/shadcn/field";
 import { Input } from "@/shared/ui/shadcn/input";
-import { useEffect, useState } from "react";
+import { type ComponentProps, type FormEvent, useEffect, useState } from "react";
 import { useSignInStore } from "@/shared/stores/useSignInStore";
 import { useRouter } from "next/navigation";
+import { signIn } from "@/entities/signIn/api/api";
+import { toast } from "sonner";
 
-export function SignInForm({ className, ...props }: React.ComponentProps<"div">) {
-   const { isLoggedIn, signIn, me } = useSignInStore();
+export function SignInForm({ className, ...props }: ComponentProps<"div">) {
+   const { isLoggedIn, setUser } = useSignInStore();
    const [isLoading, setIsLoading] = useState(true);
    const router = useRouter();
 
@@ -20,7 +22,6 @@ export function SignInForm({ className, ...props }: React.ComponentProps<"div">)
    useEffect(() => {
       const init = async () => {
          setIsLoading(true);
-         await me();
          setIsLoading(false);
          if (isLoggedIn) {
             router.push("/");
@@ -28,18 +29,21 @@ export function SignInForm({ className, ...props }: React.ComponentProps<"div">)
          }
       };
       init();
-   }, [isLoggedIn, router, me]);
+   }, [isLoggedIn, router]);
 
-   const handleSubmit = async (e: React.FormEvent) => {
+   const handleSubmit = async (e: FormEvent) => {
       e.preventDefault();
 
-      try {
-         const success = await signIn(email, password);
-         if (success) {
-            router.push("/");
+      const userData = await signIn(email, password);
+      if (userData && "accessToken" in userData) {
+         setUser(userData);
+         router.push("/");
+      } else if (userData && "status" in userData) {
+         if (userData.status === 400) {
+            toast.error("Login error", { description: "Incorrect login or password" });
+         } else {
+            toast.error("Login error", { description: userData.message });
          }
-      } catch (error) {
-         console.log(error);
       }
    };
 
