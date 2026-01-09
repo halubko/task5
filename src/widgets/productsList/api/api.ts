@@ -1,38 +1,56 @@
-import axios, { type AxiosResponse } from "axios";
+import axios, { type AxiosResponse, isAxiosError } from "axios";
 import { BASE_URL } from "@/shared/constants/constants";
 import type {
    ProductParamsInterface,
    ProductsListResponseInterface,
 } from "@/widgets/productsList/interfaces/productsList";
+import { toast } from "sonner";
 
 const axiosInstance = axios.create({
    baseURL: BASE_URL + "products",
 });
 
-// Basic get posts. Should be changed for pagination / infinite scroll
 export const getAllProducts = async (params: ProductParamsInterface) => {
-   const response: AxiosResponse<ProductsListResponseInterface> = await axiosInstance.get("", {
-      params,
-   });
-   return response.data;
+   try {
+      const response: AxiosResponse<ProductsListResponseInterface> = await axiosInstance.get("", {
+         params,
+      });
+      return response.data;
+   } catch (error) {
+      if (isAxiosError(error)) {
+         toast.error("Loading products error", { description: error.message });
+      }
+   }
 };
 
 export const getSearchedProducts = async (params: ProductParamsInterface) => {
-   const response: AxiosResponse<ProductsListResponseInterface> = await axiosInstance.get(
-      "/search",
-      {
-         params,
+   try {
+      const response: AxiosResponse<ProductsListResponseInterface> = await axiosInstance.get(
+         "/search",
+         {
+            params,
+         }
+      );
+      return response.data;
+   } catch (error) {
+      if (isAxiosError(error)) {
+         toast.error("Loading searched products error", { description: error.message });
       }
-   );
-   return response.data;
+   }
 };
 
 export const getProductsByCategory = async (params: ProductParamsInterface, category: string) => {
-   const response: AxiosResponse<ProductsListResponseInterface> = await axiosInstance.get(
-      `/category/${category}`,
-      {
-         params,
+   try {
+      const response: AxiosResponse<ProductsListResponseInterface> = await axiosInstance.get(
+         `/category/${category}`,
+         {
+            params,
+         }
+      );
+      return response.data;
+   } catch (error) {
+      if (isAxiosError(error)) {
+         toast.error("Loading products by category error", { description: error.message });
       }
-   );
-   return response.data;
+   }
 };

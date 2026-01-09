@@ -1,14 +1,14 @@
 import { Button } from "@/shared/ui/shadcn/button";
 import { ShoppingCartIcon } from "lucide-react";
 import { ThemeToggleButton } from "@/features/toggleTheme/ui/ThemeToogleButton";
-import ProfileDropdown from "@/widgets/header/ui/ProfileDropdown";
 import Link from "next/link";
 import BackButton from "@/features/goBack/ui/BackButton";
 import { ProductsFilter } from "@/widgets/productsFilter/ui/ProductsFilter";
+import AuthButton from "@/widgets/header/ui/AuthButton";
 
 const Header = ({ isMainPage = false }: { isMainPage?: boolean }) => {
    return (
-      <header className="grid grid-cols-2 items-center p-2 sticky top-0 z-10">
+      <header className="grid grid-cols-2 items-center p-2 sticky top-0 z-10 backdrop-blur">
          <div className="flex items-center gap-2">
             {isMainPage ? <ProductsFilter /> : <BackButton />}
             <Link href="/" className="flex items-center">
@@ -23,7 +23,7 @@ const Header = ({ isMainPage = false }: { isMainPage?: boolean }) => {
                   Cart
                </Button>
             </Link>
-            <ProfileDropdown />
+            <AuthButton />
          </div>
       </header>
    );

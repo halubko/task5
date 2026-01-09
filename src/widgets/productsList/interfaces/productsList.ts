@@ -11,8 +11,24 @@ export interface ProductParamsInterface {
    sortBy?: string;
    order?: string;
    q?: string;
+   limit?: number;
+   skip?: number;
 }
 
-export interface ProductsListInterface {
-   searchParams?: { [key: string]: string | undefined };
+export interface InitialStoreInterface {
+   products: ProductInterface[];
+   skip: number;
+   stopLoading: boolean;
+   updateProducts: (products: ProductInterface[]) => void;
+   updateSkip: (skip: number) => void;
+   reset: () => void;
+   setLoading: (value: boolean) => void;
+}
+
+export interface GetProductsParams {
+   sortBy?: string;
+   order?: string;
+   q?: string;
+   category?: string;
+   [key: string]: string | undefined;
 }
