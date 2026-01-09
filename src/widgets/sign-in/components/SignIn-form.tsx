@@ -14,6 +14,7 @@ import { Input } from "@/shared/components/ui/input";
 import { useSignInStore } from "@/shared/stores/useSignInStore";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export function SignInForm({ className, ...props }: React.ComponentProps<"div">) {
    const { isLoggedIn, signIn, me } = useSignInStore();
@@ -71,10 +72,7 @@ export function SignInForm({ className, ...props }: React.ComponentProps<"div">)
 
    return (
       <div
-         className={cn(
-            "flex flex-col gap-6 w-full max-w-md mx-auto bg-slate-100 mt-[150px]",
-            className
-         )}
+         className={cn("flex flex-col gap-6 w-full max-w-md mx-auto mt-[150px]", className)}
          {...props}
       >
          <Card>
@@ -119,8 +117,7 @@ export function SignInForm({ className, ...props }: React.ComponentProps<"div">)
                            Login
                         </Button>
                         <FieldDescription className="text-center">
-                           Don&apos;t have an account?{" "}
-                           <a href="@/entities/sign-in/components/SignIn-form#">Sign up</a>
+                           Don&apos;t have an account? <Link href="/auth/signUp">Sign up</Link>
                         </FieldDescription>
                      </Field>
                   </FieldGroup>
