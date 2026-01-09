@@ -7,7 +7,7 @@ import type { ComponentProps } from "react";
 
 export function SignUpForm({ ...props }: ComponentProps<typeof Card>) {
    return (
-      <div className={"flex flex-col gap-6 w-full max-w-md mx-auto bg-slate-100"} {...props}>
+      <div className={"flex flex-col gap-6 w-full max-w-md mx-auto"} {...props}>
          <Card>
             <CardHeader>
                <CardTitle>Create an account</CardTitle>
@@ -46,7 +46,7 @@ export function SignUpForm({ ...props }: ComponentProps<typeof Card>) {
                               Create Account
                            </Button>
                            <FieldDescription className="px-6 text-center">
-                              Already have an account? <Link href="#">Sign in</Link>
+                              Already have an account? <Link href="/auth/signIn">Sign in</Link>
                            </FieldDescription>
                         </Field>
                      </FieldGroup>
