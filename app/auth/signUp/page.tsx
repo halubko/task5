@@ -1,4 +1,4 @@
-import { SignUpForm } from "@/entities/signUp/ui/SignUpForm";
+import { SignUpForm } from "@/widgets/signUp/ui/SignUpForm";
 
 const SignUpPage = () => {
    return (

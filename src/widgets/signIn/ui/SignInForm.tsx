@@ -10,6 +10,7 @@ import { useSignInStore } from "@/shared/stores/useSignInStore";
 import { useRouter } from "next/navigation";
 import { signIn } from "@/entities/signIn/api/api";
 import { toast } from "sonner";
+import Link from "next/link";
 
 export function SignInForm({ className, ...props }: ComponentProps<"div">) {
    const { isLoggedIn, setUser } = useSignInStore();
@@ -69,10 +70,7 @@ export function SignInForm({ className, ...props }: ComponentProps<"div">) {
 
    return (
       <div
-         className={cn(
-            "flex flex-col gap-6 w-full max-w-md mx-auto bg-slate-100 mt-[150px]",
-            className
-         )}
+         className={cn("flex flex-col gap-6 w-full max-w-md mx-auto mt-[150px]", className)}
          {...props}
       >
          <Card>
@@ -117,8 +115,7 @@ export function SignInForm({ className, ...props }: ComponentProps<"div">) {
                            Login
                         </Button>
                         <FieldDescription className="text-center">
-                           Don&apos;t have an account?{" "}
-                           <a href="@/entities/sign-in/components/SignIn-form#">Sign up</a>
+                           Don&apos;t have an account? <Link href="/auth/signUp">Sign up</Link>
                         </FieldDescription>
                      </Field>
                   </FieldGroup>
