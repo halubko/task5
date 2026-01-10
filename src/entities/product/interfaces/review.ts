@@ -1,7 +1,9 @@
+import type { TDateISO } from "@/entities/product/interfaces/date";
+
 export interface Review {
    rating: number;
    comment: string;
-   date: string;
+   date: TDateISO;
    reviewerName: string;
 }
 
