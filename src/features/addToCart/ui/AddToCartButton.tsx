@@ -1,13 +1,10 @@
 "use client";
 
 import { Button } from "@/shared/ui/shadcn/button";
-import { type ButtonHTMLAttributes, useMemo } from "react";
+import { useMemo } from "react";
 import QuantityChanger from "@/shared/ui/QuantityChanger";
 import { useShopCartStore } from "@/entities/shopCart/stores/shopCart";
-
-interface AddToCartButtonInterface extends ButtonHTMLAttributes<HTMLButtonElement> {
-   productId: number;
-}
+import type { AddToCartButtonInterface } from "@/features/addToCart/interfaces/addToCart";
 
 const AddToCartButton = ({ productId, ...props }: AddToCartButtonInterface) => {
    const { updateQuantity, cartItems, removeProduct } = useShopCartStore();
