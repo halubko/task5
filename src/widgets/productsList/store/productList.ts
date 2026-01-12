@@ -14,5 +14,5 @@ export const useProductList = create<InitialStoreInterface>((set) => ({
 
    reset: () => set(() => ({ products: [], skip: 0, stopLoading: false })),
 
-   setLoading: (arg: boolean) => set(() => ({ stopLoading: arg })),
+   setStopLoading: (arg: boolean) => set(() => ({ stopLoading: arg })),
 }));

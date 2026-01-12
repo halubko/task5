@@ -16,7 +16,7 @@ interface IProductsList {
 }
 
 const ProductsList = ({ initialProducts }: IProductsList) => {
-   const { products, skip, updateProducts, updateSkip, reset, setLoading, stopLoading } =
+   const { products, skip, updateProducts, updateSkip, reset, setStopLoading, stopLoading } =
       useProductList();
    const { ref, inView } = useInView();
    const searchParams = useSearchParams();
@@ -47,10 +47,10 @@ const ProductsList = ({ initialProducts }: IProductsList) => {
             updateProducts(response.products);
             updateSkip(NUMBER_OF_PRODUCTS_TO_FETCH);
             if (response.products.length < NUMBER_OF_PRODUCTS_TO_FETCH) {
-               setLoading(true);
+               setStopLoading(true);
             }
          } else {
-            setLoading(true);
+            setStopLoading(true);
          }
       }
    };

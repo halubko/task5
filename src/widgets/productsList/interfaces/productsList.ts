@@ -22,7 +22,7 @@ export interface InitialStoreInterface {
    updateProducts: (products: ProductInterface[]) => void;
    updateSkip: (skip: number) => void;
    reset: () => void;
-   setLoading: (value: boolean) => void;
+   setStopLoading: (value: boolean) => void;
 }
 
 export interface GetProductsParams {
