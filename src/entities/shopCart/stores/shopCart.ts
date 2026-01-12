@@ -1,7 +1,7 @@
 import { create } from "zustand/react";
 import type { InitialState } from "@/entities/shopCart/interfaces/ShopCart";
 
-export const useShopCartStore = create<InitialState>((set, get) => ({
+export const useShopCartStore = create<InitialState>((set) => ({
    cartItems: [],
 
    updateQuantity: (id: number, quantity: number) =>
