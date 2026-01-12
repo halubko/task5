@@ -7,9 +7,9 @@ import {
 } from "@/shared/ui/shadcn/card";
 import { ProductRating } from "@/entities/product/ui/ProductRating";
 import AddToCartButton from "@/features/addToCart/ui/AddToCartButton";
-import type { ProductInfoCardInterface } from "@/widgets/productCards/interfaces/product";
+import type { ProductInterface } from "@/widgets/productCards/interfaces/product";
 
-const ProductInfoCard = ({ description, rating, price }: ProductInfoCardInterface) => {
+const ProductInfoCard = ({ description, rating, price, id }: ProductInterface) => {
    return (
       <Card className="h-fit">
          <CardContent>
@@ -19,7 +19,7 @@ const ProductInfoCard = ({ description, rating, price }: ProductInfoCardInterfac
          <CardFooter className="flex flex-col gap-2">
             <h2 className="w-full">Price: {price}$</h2>
             <CardAction className="w-full">
-               <AddToCartButton className="w-full" />
+               <AddToCartButton className="w-full" productId={id} />
             </CardAction>
          </CardFooter>
       </Card>

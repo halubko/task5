@@ -31,7 +31,7 @@ const ProductShortCard = ({ title, price, images, rating, id }: ProductInterface
          </CardContent>
          <CardFooter className="flex justify-center items-center">
             <CardAction className="w-full">
-               <AddToCartButton className="w-full" />
+               <AddToCartButton className="w-full" productId={id} />
             </CardAction>
          </CardFooter>
       </Card>
