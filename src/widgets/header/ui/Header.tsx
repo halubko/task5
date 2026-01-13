@@ -1,9 +1,8 @@
-import { Button } from "@/shared/ui/shadcn/button";
-import { ShoppingCartIcon } from "lucide-react";
 import { ThemeToggleButton } from "@/features/toggleTheme/ui/ThemeToogleButton";
 import Link from "next/link";
 import BackButton from "@/features/goBack/ui/BackButton";
 import AuthButton from "@/features/authButton/ui/AuthButton";
+import GoToCartButton from "@/widgets/header/ui/GoToCartButton";
 
 const Header = () => {
    return (
@@ -16,12 +15,7 @@ const Header = () => {
          </div>
          <div className="flex gap-2 justify-end items-center">
             <ThemeToggleButton />
-            <Link href="/shopCart">
-               <Button>
-                  <ShoppingCartIcon />
-                  Cart
-               </Button>
-            </Link>
+            <GoToCartButton />
             <AuthButton />
          </div>
       </header>
