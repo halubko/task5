@@ -52,7 +52,6 @@ describe("ShopCart", () => {
    });
 
    it("shows item count and subtotal", async () => {
-      // Переопределяем мок для этого теста
       vi.mocked(await import("@/widgets/shopCart/hooks/useCartActions")).useCartActions = vi.fn(
          () => ({
             items: [{ id: "1", name: "Test", price: 50, quantity: 1 }],
