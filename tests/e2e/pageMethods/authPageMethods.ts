@@ -1,6 +1,6 @@
 import type { Page } from "@playwright/test";
 
-export class PageMethods {
+export class AuthPageMethods {
    private page: Page;
 
    constructor(page: Page) {
