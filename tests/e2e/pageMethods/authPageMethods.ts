@@ -1,16 +1,6 @@
-import type { Page } from "@playwright/test";
+import { CommonMethods } from "./commonMethods";
 
-export class AuthPageMethods {
-   private page: Page;
-
-   constructor(page: Page) {
-      this.page = page;
-   }
-
-   async navigateTo(): Promise<void> {
-      await this.page.goto("http://localhost:3000");
-   }
-
+export class AuthPageMethods extends CommonMethods {
    async clickLoginLink() {
       await this.page.getByRole("button", { name: "Log in" }).click();
    }
