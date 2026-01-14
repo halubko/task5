@@ -3,6 +3,7 @@ import { cn } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui/shadcn/button";
 import type { Props } from "@/entities/shopCart/interfaces/ShopCart";
 import { Minus, Package, Plus, Trash2 } from "lucide-react";
+import Image from "next/image";
 
 export const ShopCartItem = ({ items, isRemoving, removeItem, updateQuantity }: Props) => {
    return (
@@ -16,7 +17,7 @@ export const ShopCartItem = ({ items, isRemoving, removeItem, updateQuantity }: 
             >
                <div className="flex flex-col sm:flex-row">
                   <div className="relative h-auto w-full sm:w-40">
-                     <img
+                     <Image
                         src={item.image}
                         alt={item.name}
                         className="h-36 w-full object-cover object-center"
