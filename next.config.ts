@@ -8,6 +8,9 @@ const nextConfig: NextConfig = {
          {
             hostname: "cdn.dummyjson.com",
          },
+         {
+            hostname: "images.unsplash.com",
+         },
       ],
    },
 };
