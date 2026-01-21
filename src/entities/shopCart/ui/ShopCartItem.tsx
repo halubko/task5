@@ -20,6 +20,7 @@ export const ShopCartItem = ({ items, isRemoving, removeItem, updateQuantity }: 
                      <Image
                         src={item.image}
                         alt={item.name}
+                        fill
                         className="h-36 w-full object-cover object-center"
                      />
                   </div>
