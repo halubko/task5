@@ -8,6 +8,9 @@ import AuthProvider from "@/app/providers/AuthProvider";
 export const metadata: Metadata = {
    title: "Shop",
    description: "Internet-shop, shop, marketplace, market",
+   icons: {
+      icon: "/favicon.ico",
+   },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
