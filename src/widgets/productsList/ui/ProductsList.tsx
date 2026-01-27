@@ -2,7 +2,7 @@
 
 import ProductShortCard from "@/widgets/productCards/ui/ProductShortCard";
 import type { ProductInterface } from "@/widgets/productCards/interfaces/product";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import { getProducts } from "@/widgets/productsList/services/getProducts";
 import { NUMBER_OF_PRODUCTS_TO_FETCH } from "@/widgets/productsList/constants/constants";
 import { useInView } from "react-intersection-observer";
@@ -21,7 +21,10 @@ const ProductsList = ({ initialProducts }: IProductsList) => {
    const { ref, inView } = useInView();
    const searchParams = useSearchParams();
    const searchParamsString = searchParams?.toString() ?? "";
-   const params = searchParams ? Object.fromEntries(searchParams.entries()) : {};
+   const params = useMemo(
+      () => (searchParams ? Object.fromEntries(searchParams.entries()) : {}),
+      [searchParams]
+   );
    const prevSearchParams = useRef(searchParamsString);
 
    useEffect(() => {
@@ -38,9 +41,9 @@ const ProductsList = ({ initialProducts }: IProductsList) => {
          updateProducts(initialProducts);
          updateSkip(NUMBER_OF_PRODUCTS_TO_FETCH);
       }
-   }, [searchParamsString]);
+   }, [initialProducts, params, reset, searchParamsString, updateProducts, updateSkip]);
 
-   const loadMoreProducts = async () => {
+   const loadMoreProducts = useCallback(async () => {
       if (searchParams) {
          const response = await getProducts(skip, params);
          if (response) {
@@ -53,17 +56,17 @@ const ProductsList = ({ initialProducts }: IProductsList) => {
             setStopLoading(true);
          }
       }
-   };
+   }, [params, searchParams, skip, updateProducts, updateSkip, setStopLoading]);
 
    useEffect(() => {
       if (inView && skip > 0) {
          loadMoreProducts();
       }
-   }, [inView, loadMoreProducts]);
+   }, [inView, loadMoreProducts, skip]);
 
    return (
       <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 row-auto p-2 gap-2 max-w-7xl mx-auto">
-         {products.length > 1 ? (
+         {products.length > 0 ? (
             products.map((product) => <ProductShortCard key={product.id} {...product} />)
          ) : (
             <NotFoundCard />

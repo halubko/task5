@@ -1,5 +1,4 @@
-import type { Page } from "@playwright/test";
-import { test } from "@playwright/test";
+import { type Page, test } from "@playwright/test";
 import { describe } from "node:test";
 import { AuthPageMethods } from "../pageMethods/authPageMethods";
 
