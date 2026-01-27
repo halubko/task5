@@ -15,6 +15,7 @@ const eslintConfig = defineConfig([
       rules: {
          "prettier/prettier": "warn",
          "no-console": "warn",
+         "react-hooks/exhaustive-deps": "off",
       },
    },
    // Override default ignores of eslint-config-next.
