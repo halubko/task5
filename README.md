@@ -1,6 +1,6 @@
 # Task 5
 
-## [Task](https://innowise-group.atlassian.net/jira/software/c/projects/JST/boards/390?selectedIssue=JST-2419) | [Deploy]
+## [Task](https://innowise-group.atlassian.net/jira/software/c/projects/JST/boards/390?selectedIssue=JST-2419) | [Deploy](https://task5-two-fawn.vercel.app/)
 
 ## Installation instructions:
 1) Clone repository:
