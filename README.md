@@ -54,6 +54,7 @@ Created online store web-app with using NextJS, Zustand.
 - React-intersection-observer
 - Toastify
 - Vitest
+- Playwright
 
 ## Lighthouse deploy test screenshot:
 <img width="504" height="193" alt="Снимок экрана 2026-01-27 в 23 11 07" src="https://github.com/user-attachments/assets/4f758690-a5e6-4d38-bff9-062626bf2f7a" />
