@@ -41,15 +41,7 @@ const ProductsList = ({ initialProducts }: IProductsList) => {
          updateProducts(initialProducts);
          updateSkip(NUMBER_OF_PRODUCTS_TO_FETCH);
       }
-   }, [
-      initialProducts,
-      params,
-      products.length,
-      reset,
-      searchParamsString,
-      updateProducts,
-      updateSkip,
-   ]);
+   }, [initialProducts, params, reset, searchParamsString, updateProducts, updateSkip]);
 
    const loadMoreProducts = useCallback(async () => {
       if (searchParams) {
