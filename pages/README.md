@@ -1,1 +1,0 @@
-"pages" folder added to the project root, otherwise Next.js will try to use "src/pages" as the Pages Router even if used the App Router, which will break the build.
