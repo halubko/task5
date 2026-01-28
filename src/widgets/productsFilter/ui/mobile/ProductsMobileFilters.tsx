@@ -11,7 +11,7 @@ import { Button } from "@/shared/ui/shadcn/button";
 import { ListFilterPlus, Search } from "lucide-react";
 import SheetItem from "@/widgets/productsFilter/ui/mobile/SheetItem";
 import { BasicSelector } from "@/shared/ui/BasicSelector";
-import { sortValues } from "@/widgets/productsFilter/data/sortValues";
+import { SORT_VALUES } from "@/widgets/productsFilter/constants/sortValues";
 import ProductCategories from "@/widgets/productsFilter/ui/ProductCategories";
 import type { FilterInterface } from "@/widgets/productsFilter/interfaces/productFilter";
 import { Input } from "@/shared/ui/shadcn/input";
@@ -55,7 +55,7 @@ const ProductsMobileFilters = ({
             <SheetItem label="Price sort by">
                <BasicSelector
                   basicValue="Order"
-                  values={sortValues}
+                  values={SORT_VALUES}
                   value={sortValue}
                   onValueChange={handleSortChange}
                />

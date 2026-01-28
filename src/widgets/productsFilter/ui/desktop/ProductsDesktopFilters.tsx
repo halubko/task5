@@ -2,7 +2,7 @@ import InputWithIcon from "@/shared/ui/InputWithIcon";
 import { ListOrdered, Search } from "lucide-react";
 import { Input } from "@/shared/ui/shadcn/input";
 import { BasicSelector } from "@/shared/ui/BasicSelector";
-import { sortValues } from "@/widgets/productsFilter/data/sortValues";
+import { SORT_VALUES } from "@/widgets/productsFilter/constants/sortValues";
 import ProductsFiltersCategoriesCard from "@/widgets/productsFilter/ui/desktop/ProductsFiltersCategoriesCard";
 import { Button } from "@/shared/ui/shadcn/button";
 import type { FilterInterface } from "@/widgets/productsFilter/interfaces/productFilter";
@@ -33,7 +33,7 @@ const ProductsDesktopFilters = ({
             <BasicSelector
                className="pl-9"
                basicValue="Order"
-               values={sortValues}
+               values={SORT_VALUES}
                value={sortValue}
                onValueChange={handleSortChange}
             />
